@@ -1,26 +1,61 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "LoanManagementSystem.BuisnessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/LoanManagementSystem.BuisnessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LoanManagementSystem.BuisnessLayer.dll": {}
+        }
+      },
+      "LoanManagementSystem.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/LoanManagementSystem.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LoanManagementSystem.Entities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "LoanManagementSystem.BuisnessLayer/1.0.0": {
+      "type": "project",
+      "path": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BuisnessLayer.csproj",
+      "msbuildProject": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BuisnessLayer.csproj"
+    },
+    "LoanManagementSystem.Entities/1.0.0": {
+      "type": "project",
+      "path": "../LoanManagementSystem.Entities/LoanManagementSystem.Entities.csproj",
+      "msbuildProject": "../LoanManagementSystem.Entities/LoanManagementSystem.Entities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "LoanManagementSystem.BuisnessLayer >= 1.0.0",
+      "LoanManagementSystem.Entities >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\anujg\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\.Net_Batch\\LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\LoanManagementSystem.UI.csproj",
+      "projectUniqueName": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\LoanManagementSystem.UI.csproj",
       "projectName": "LoanManagementSystem.UI",
-      "projectPath": "F:\\.Net_Batch\\LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\LoanManagementSystem.UI.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\.Net_Batch\\LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\obj\\",
+      "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\LoanManagementSystem.UI.csproj",
+      "packagesPath": "C:\\Users\\anujg\\.nuget\\packages\\",
+      "outputPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\anujg\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +68,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BuisnessLayer.csproj": {
+              "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BuisnessLayer.csproj"
+            },
+            "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj": {
+              "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

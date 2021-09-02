@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PCqHTPBjT/cZBaxzulmlEXLrXyI+Uu/rBNpMLalVT2k29KuSdknh3Ojgq+69tFHZLDbRdgjJOOturdQ2fGRyYA==",
+  "dgSpecHash": "r7z+JFeyKt2w/8Z5nKGN/KOUkxvW78S7m+DMjgLTEbJehpALZDbQGhSDwwnWrYRqKPdDva5PEDVCupUd98Xglw==",
   "success": true,
-  "projectFilePath": "F:\\.Net_Batch\\LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj",
+  "projectFilePath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

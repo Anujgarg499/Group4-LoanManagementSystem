@@ -1,0 +1,12 @@
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\bin\Debug\net5.0\LoanManagementSystem.Entities.deps.json
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\bin\Debug\net5.0\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\bin\Debug\net5.0\ref\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\bin\Debug\net5.0\LoanManagementSystem.Entities.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.csproj.AssemblyReference.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.AssemblyInfoInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.AssemblyInfo.cs
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.csproj.CoreCompileInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\ref\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.Entities\obj\Debug\net5.0\LoanManagementSystem.Entities.pdb
