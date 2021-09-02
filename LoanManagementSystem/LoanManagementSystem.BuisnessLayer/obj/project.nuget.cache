@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FmBne57OUpWVw1jxGNCj6LtoJVcjP2tp81oUQ1npWOgPCEPHeG8169q86BTwRQ3nbQlYxsjXzvQUkunzrghzJg==",
+  "dgSpecHash": "YaHWGO6cKe1raPIqEED6ZvmnhnuXuLQrtC0dHZv7e2Woj8sHhZalerRwzyoFDAUU+hiLXyMgnxF1iuVz8/5Qow==",
   "success": true,
-  "projectFilePath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BuisnessLayer.csproj",
+  "projectFilePath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BAL.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

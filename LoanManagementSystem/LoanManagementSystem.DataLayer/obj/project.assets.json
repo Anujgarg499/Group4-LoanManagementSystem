@@ -131,6 +131,19 @@
           }
         }
       },
+      "LoanManagementSystem.BAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "LoanManagementSystem.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LoanManagementSystem.BAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LoanManagementSystem.BAL.dll": {}
+        }
+      },
       "LoanManagementSystem.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -457,6 +470,11 @@
         "version.txt"
       ]
     },
+    "LoanManagementSystem.BAL/1.0.0": {
+      "type": "project",
+      "path": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BAL.csproj",
+      "msbuildProject": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BAL.csproj"
+    },
     "LoanManagementSystem.Entities/1.0.0": {
       "type": "project",
       "path": "../LoanManagementSystem.Entities/LoanManagementSystem.Entities.csproj",
@@ -465,6 +483,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "LoanManagementSystem.BAL >= 1.0.0",
       "LoanManagementSystem.Entities >= 1.0.0",
       "System.Data.SqlClient >= 4.8.2"
     ]
@@ -475,9 +494,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.DataLayer\\LoanManagementSystem.DataLayer.csproj",
-      "projectName": "LoanManagementSystem.DataLayer",
-      "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.DataLayer\\LoanManagementSystem.DataLayer.csproj",
+      "projectUniqueName": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.DataLayer\\LoanManagementSystem.DAL.csproj",
+      "projectName": "LoanManagementSystem.DAL",
+      "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.DataLayer\\LoanManagementSystem.DAL.csproj",
       "packagesPath": "C:\\Users\\anujg\\.nuget\\packages\\",
       "outputPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.DataLayer\\obj\\",
       "projectStyle": "PackageReference",
@@ -496,6 +515,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BAL.csproj": {
+              "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BAL.csproj"
+            },
             "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj": {
               "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj"
             }

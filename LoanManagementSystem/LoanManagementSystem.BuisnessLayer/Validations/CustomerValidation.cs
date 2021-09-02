@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoanManagementSystem.BuisnessLayer.Validations
+namespace LoanManagementSystem.BAL.Validations
 {
     class CustomerValidation
     {

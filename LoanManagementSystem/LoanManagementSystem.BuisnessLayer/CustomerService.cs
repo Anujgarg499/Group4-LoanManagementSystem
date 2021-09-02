@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoanManagementSystem.BuisnessLayer
+namespace LoanManagementSystem.BAL
 {
     public class CustomerService
     {

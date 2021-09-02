@@ -1,0 +1,17 @@
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.DAL.deps.json
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.DAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\ref\LoanManagementSystem.DAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.DAL.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.BAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.BAL.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\bin\Debug\net5.0\LoanManagementSystem.Entities.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.csproj.AssemblyReference.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.AssemblyInfoInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.AssemblyInfo.cs
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.csproj.CoreCompileInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.csproj.CopyComplete
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\ref\LoanManagementSystem.DAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.DataLayer\obj\Debug\net5.0\LoanManagementSystem.DAL.pdb

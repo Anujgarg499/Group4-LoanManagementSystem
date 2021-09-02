@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using LoanManagementSystem.Entities;
 
-namespace LoanManagementSystem.DataLayer.Repositories
+namespace LoanManagementSystem.DAL.Repositories
 {
     public interface ICustomerRepository
     {
         void AddCustomer(Customer customer);
         void UpdateCustomerById(Customer customer);
-        bool IsLoginCustomer(Customer customer);
+        bool IsLoginCustomer(string CUSTOMER_ID,string CUSTOMER_PASSWORD);
     }
 }

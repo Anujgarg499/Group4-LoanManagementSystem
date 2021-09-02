@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using LoanManagementSystem.Entities;
 
-namespace LoanManagementSystem.DataLayer.Repositories
+namespace LoanManagementSystem.DAL.Repositories
 {
     class CustomerRepository : ICustomerRepository
     {
@@ -48,7 +48,7 @@ namespace LoanManagementSystem.DataLayer.Repositories
 			}
 		}
 
-        public bool IsLoginCustomer(Customer customer)
+        public bool IsLoginCustomer(string CUSTOMER_ID, string CUSTOMER_PASSWORD)
         {
             throw new NotImplementedException();
         }

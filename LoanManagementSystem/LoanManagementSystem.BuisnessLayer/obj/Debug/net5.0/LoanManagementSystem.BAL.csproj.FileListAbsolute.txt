@@ -1,0 +1,15 @@
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.BAL.deps.json
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.BAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\ref\LoanManagementSystem.BAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.BAL.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.Entities.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.Entities.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.csproj.AssemblyReference.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.AssemblyInfoInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.AssemblyInfo.cs
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.csproj.CoreCompileInputs.cache
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.csproj.CopyComplete
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\ref\LoanManagementSystem.BAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.pdb

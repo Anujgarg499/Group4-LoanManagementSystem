@@ -5,4 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoanManagementSystem.BuisnessLayer\LoanManagementSystem.BAL.csproj" />
+    <ProjectReference Include="..\LoanManagementSystem.Entities\LoanManagementSystem.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,5 @@
 ﻿using System;
-using LoanManagementSystem.BuisnessLayer;
+using LoanManagementSystem.BAL;
 using LoanManagementSystem.Entities;
 
 namespace LoanManagementSystem.UI

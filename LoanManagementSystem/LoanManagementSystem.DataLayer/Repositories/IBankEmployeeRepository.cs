@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using LoanManagementSystem.Entities;
 
-namespace LoanManagementSystem.DataLayer.Repositories
+namespace LoanManagementSystem.DAL.Repositories
 {
-    public interface IBank_EmployeeRepository
+    public interface IBankEmployeeRepository
     {
-        bool IsLoginBankEmployee(Bank_Employee bank_Employee);
+        bool IsLoginBankEmployee(string EmpId,string EmpPassword);
         List<Customer> ViewCustomers();
         Customer SearchCustomerById(string CUSTOMER_ID);
         void DeleteCustomerById(string CUSTOMER_ID);

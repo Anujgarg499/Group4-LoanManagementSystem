@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagementSystem.Entities
 {
-    public class Bank_Employee
+    public class BankEmployee
     {
         // Getting and Setting Employee Entities Details
         public string EmpId { get; set; } 

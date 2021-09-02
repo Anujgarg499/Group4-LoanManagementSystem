@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "LoanManagementSystem.BAL/1.0.0": {
+        "dependencies": {
+          "LoanManagementSystem.Entities": "1.0.0"
+        },
+        "runtime": {
+          "LoanManagementSystem.BAL.dll": {}
+        }
+      },
+      "LoanManagementSystem.Entities/1.0.0": {
+        "runtime": {
+          "LoanManagementSystem.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LoanManagementSystem.BAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LoanManagementSystem.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

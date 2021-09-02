@@ -2,14 +2,17 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "LoanManagementSystem.BuisnessLayer/1.0.0": {
+      "LoanManagementSystem.BAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "LoanManagementSystem.Entities": "1.0.0"
+        },
         "compile": {
-          "bin/placeholder/LoanManagementSystem.BuisnessLayer.dll": {}
+          "bin/placeholder/LoanManagementSystem.BAL.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LoanManagementSystem.BuisnessLayer.dll": {}
+          "bin/placeholder/LoanManagementSystem.BAL.dll": {}
         }
       },
       "LoanManagementSystem.Entities/1.0.0": {
@@ -25,10 +28,10 @@
     }
   },
   "libraries": {
-    "LoanManagementSystem.BuisnessLayer/1.0.0": {
+    "LoanManagementSystem.BAL/1.0.0": {
       "type": "project",
-      "path": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BuisnessLayer.csproj",
-      "msbuildProject": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BuisnessLayer.csproj"
+      "path": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BAL.csproj",
+      "msbuildProject": "../LoanManagementSystem.BuisnessLayer/LoanManagementSystem.BAL.csproj"
     },
     "LoanManagementSystem.Entities/1.0.0": {
       "type": "project",
@@ -38,7 +41,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "LoanManagementSystem.BuisnessLayer >= 1.0.0",
+      "LoanManagementSystem.BAL >= 1.0.0",
       "LoanManagementSystem.Entities >= 1.0.0"
     ]
   },
@@ -69,8 +72,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BuisnessLayer.csproj": {
-              "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BuisnessLayer.csproj"
+            "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BAL.csproj": {
+              "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.BuisnessLayer\\LoanManagementSystem.BAL.csproj"
             },
             "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj": {
               "projectPath": "E:\\CG\\.net\\Group4-LoanManagementSystem\\LoanManagementSystem\\LoanManagementSystem.Entities\\LoanManagementSystem.Entities.csproj"

@@ -7,9 +7,9 @@ using System.Data.SqlClient;
 using System.Data;
 using LoanManagementSystem.Entities;
 
-namespace LoanManagementSystem.DataLayer.Repositories
+namespace LoanManagementSystem.DAL.Repositories
 {
-    class Bank_EmployeeRepository : IBank_EmployeeRepository
+    class BankEmployeeRepository : IBankEmployeeRepository
     {
         SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
         SqlCommand command = null;
@@ -22,8 +22,7 @@ namespace LoanManagementSystem.DataLayer.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public bool IsLoginBankEmployee(Bank_Employee bank_Employee)
+        public bool IsLoginBankEmployee(string EmpId, string EmpPassword)
         {
             throw new NotImplementedException();
         }
