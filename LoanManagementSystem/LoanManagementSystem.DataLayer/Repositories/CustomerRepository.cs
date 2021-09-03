@@ -79,11 +79,12 @@ namespace LoanManagementSystem.DAL.Repositories
         {
             try
             {
-                command = new SqlCommand("UpdateCustomer", connection)
+                command = new SqlCommand("UpdateCustomerById", connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                //passing value to query-paramenters
+				//passing value to query-paramenters
+				command.Parameters.AddWithValue("@CUSTOMER_ID", customer.CUSTOMER_ID);
                 command.Parameters.AddWithValue("@FIRST_NAME", customer.FIRST_NAME);
                 command.Parameters.AddWithValue("@LAST_NAME", customer.LAST_NAME);
                 command.Parameters.AddWithValue("@ADDRESS", customer.ADDRESS);

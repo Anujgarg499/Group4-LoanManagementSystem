@@ -41,9 +41,8 @@ update Customer set FIRST_NAME = @FIRST_NAME,
 						  AADHAR_NUMBER =  @AADHAR_NUMBER, 
 						  CONTACT_NUMBER =  @CONTACT_NUMBER, 
 						  EMAIL =  @EMAIL , 
-						  DOB = @DOB, 
-						  CREDIT_LIMIT =  @CREDIT_LIMIT, 
-						  LAST_UPDATED_CREDIT_DATE = @LAST_UPDATED_CREDIT_DATE where CUSTOMER_ID=@CUSTOMER_ID
+						  DOB = @DOB
+						  where CUSTOMER_ID=@CUSTOMER_ID
 end
 
 -- Stored Procedure Delete Customer By Id
@@ -58,4 +57,13 @@ create procedure IsLoginCustomer(@CUSTOMER_ID varchar(20),@CUSTOMER_PASSWORD var
 as
 begin
 select * from Customer where CUSTOMER_ID=@CUSTOMER_ID and CUSTOMER_PASSWORD=@CUSTOMER_PASSWORD
+end
+
+--Stored Procedure for IsLoginEmployee
+CREATE PROCEDURE IsLoginEmployee
+      @EmpId VARCHAR(20),
+      @EmpPassword VARCHAR(30)
+AS
+BEGIN
+      SELECT * from BANK_EMPLOYEE where EmpId=@EmpId and EmpPassword=@EmpPassword
 end

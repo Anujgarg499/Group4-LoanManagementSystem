@@ -24,5 +24,22 @@ namespace LoanManagementSystem.BAL
             List<Customer> customers = repository.ViewCustomers();
             return customers;
         }
+        public Customer SearchCustomerById(string CUSTOMER_ID)
+        {
+            Customer customer =repository.SearchCustomerById(CUSTOMER_ID);
+            return customer;
+        }
+        public bool IsLoginBankEmployee(string EmpId, string EmpPassword)
+        {
+            bool check = repository.IsLoginBankEmployee(EmpId, EmpPassword);
+            if (check == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

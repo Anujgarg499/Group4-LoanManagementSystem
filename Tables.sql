@@ -29,6 +29,10 @@ CONTACT_NUMBER numeric(10),
 EMAIL varchar(20),
 EMP_TYPE varchar(20) check(EMP_TYPE in('Contract Based','Permanent'))
 )
+insert into BANK_EMPLOYEE values('Akash35','Akash','aka@123',9876543210,'akash@gmail.com','Permanent')
+insert into BANK_EMPLOYEE values('Rahul12','Rahul','rah@123',9876543211,'rahul@gmail.com','Contract Based')
+insert into BANK_EMPLOYEE values('Aditi50','Aditi','adi@123',9876543212,'aditi@gmail.com','Permanent')
+select * from BANK_EMPLOYEE
 
 drop table LOAN_DETAILS
 -- Loan Details Table

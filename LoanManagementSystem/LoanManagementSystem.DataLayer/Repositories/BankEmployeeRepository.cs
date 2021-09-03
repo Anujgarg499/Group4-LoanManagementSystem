@@ -42,7 +42,29 @@ namespace LoanManagementSystem.DAL.Repositories
         }
         public bool IsLoginBankEmployee(string EmpId, string EmpPassword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                bool loginsuccessful = false;
+                command = new SqlCommand("IsLoginEmployee", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.AddWithValue("@EmpId", EmpId);
+                command.Parameters.AddWithValue("@EmpPassword", EmpPassword);
+                connection.Open(); //open connnection
+                SqlDataReader dr = command.ExecuteReader();
+                loginsuccessful = dr.HasRows;
+                return loginsuccessful;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public Customer SearchCustomerById(string CUSTOMER_ID)
@@ -71,9 +93,7 @@ namespace LoanManagementSystem.DAL.Repositories
                         AADHAR_NUMBER = (decimal)dr["AADHAR_NUMBER"],
                         CONTACT_NUMBER = (decimal)dr["CONTACT_NUMBER"],
                         EMAIL = dr["EMAIL"].ToString(),
-                        DOB = dr["DOB"].ToString(),
-                        CREDIT_LIMIT = (decimal)dr["CREDIT_LIMIT"],
-                        LAST_UPDATED_CREDIT_DATE = (DateTime)dr["CREDIT_LIMIT"]
+                        DOB = dr["DOB"].ToString()               
 
                     };
                 }
@@ -107,7 +127,8 @@ namespace LoanManagementSystem.DAL.Repositories
                     while (dr.Read())
                     {
                         customers.Add(new Customer()
-                        {                            
+                        {
+                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
                             FIRST_NAME = dr["FIRST_NAME"].ToString(),
                             LAST_NAME = dr["LAST_NAME"].ToString(),
                             ADDRESS = dr["ADDRESS"].ToString(),

@@ -72,7 +72,7 @@ namespace LoanManagementSystem.UI
                                             string CUSTOMER_PASSWORD = Console.ReadLine();
                                             bool checklogin = customerservice.IsLoginCustomer(CUSTOMER_ID,CUSTOMER_PASSWORD);
                                             if (checklogin == true)
-                                            {
+                                            {                                               
                                                 Console.WriteLine("1. Apply For Loan");
                                                 Console.WriteLine("2. Check Status");
                                                 Console.WriteLine("3. Update Customer Details");
@@ -93,7 +93,29 @@ namespace LoanManagementSystem.UI
                                                         break;
                                                     case 3:
                                                         {
-                                                            // Update Customer Part
+                                                            // Update Customer Part                                                            
+                                                            Customer customer = new Customer();
+                                                            //getting values from user
+                                                            Console.WriteLine("Enter Customer Username: ");
+                                                            customer.CUSTOMER_ID = Console.ReadLine();
+                                                            Console.Write("Enter First Name:");
+                                                            customer.FIRST_NAME = Console.ReadLine();
+                                                            Console.Write("Enter Last Name:");
+                                                            customer.LAST_NAME = Console.ReadLine();
+                                                            Console.Write("Enter Address:");
+                                                            customer.ADDRESS = Console.ReadLine();
+                                                            Console.Write("Enter PAN Number:");
+                                                            customer.PAN_NUMBER = Console.ReadLine();
+                                                            Console.Write("Enter Aadhar Number:");
+                                                            customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
+                                                            Console.Write("Enter Contact Number:");
+                                                            customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
+                                                            Console.Write("Enter Email:");
+                                                            customer.EMAIL = Console.ReadLine();
+                                                            Console.Write("Enter Date Of Birth:");
+                                                            customer.DOB = Console.ReadLine();
+                                                            customerservice.UpdateCustomerById(customer);
+                                                            Console.WriteLine("Customer Details Updated Successfully.");
                                                         }
                                                         break;
                                                     case 4:
@@ -139,67 +161,88 @@ namespace LoanManagementSystem.UI
                                     case 1:
                                         {
                                             // After Login Section
-                                            Console.WriteLine("1. Loan Processing ");
-                                            Console.WriteLine("2. View Customers");
-                                            Console.WriteLine("3. Update Customers");
-                                            Console.WriteLine("4. Search Customer");
-                                            Console.WriteLine("5. Delete Customers");                                        
-                                            Console.WriteLine("6. Exit");
-                                            Console.WriteLine("Enter your choice: ");
-                                            int Customerchoice1 = int.Parse(Console.ReadLine());
-                                            switch (Customerchoice1)
+                                            Console.WriteLine("Enter Employee Username: ");
+                                            string EmpId = Console.ReadLine();
+                                            Console.WriteLine("Enter Password: ");
+                                            string EmpPassword = Console.ReadLine();
+                                            bool checklogin = employeeservice.IsLoginBankEmployee(EmpId,EmpPassword);
+                                            if (checklogin == true)
                                             {
-                                                case 1:
+                                                do
+                                                {
+                                                    Console.WriteLine("1. Loan Processing ");
+                                                    Console.WriteLine("2. View Customers");                                                    
+                                                    Console.WriteLine("3. Search Customer");
+                                                    Console.WriteLine("4. Delete Customers");
+                                                    Console.WriteLine("5. Exit");
+                                                    Console.WriteLine("Enter your choice: ");
+                                                    int Customerchoice1 = int.Parse(Console.ReadLine());
+                                                    switch (Customerchoice1)
                                                     {
-                                                        // Loan Processing Part to be implemented here
-                                                    }
-                                                    break;
-                                                case 2:
-                                                    {
-                                                        // View Customers part
-                                                        List<Customer> customers = employeeservice.ViewCustomers();
-                                                        if (customers != null)
-                                                        {
-                                                            foreach (var customer in customers)
+                                                        case 1:
                                                             {
-                                                                Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} {customer.CUSTOMER_PASSWORD} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} AADHAR Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
+                                                                // Loan Processing Part to be implemented here
                                                             }
-                                                        }
-                                                        else
-                                                        {
-                                                            Console.WriteLine("No Customers available.");
-                                                        }
+                                                            break;
+                                                        case 2:
+                                                            {
+                                                                // View Customers part
+                                                                List<Customer> customers = employeeservice.ViewCustomers();
+                                                                if (customers != null)
+                                                                {
+                                                                    foreach (var customer in customers)
+                                                                    {
+                                                                        Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} {customer.CUSTOMER_PASSWORD} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} AADHAR Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No Customers available.");
+                                                                }
+                                                            }
+                                                            break;                                                        
+                                                        case 3:
+                                                            {
+                                                                // Search Customer Part
+                                                                Console.WriteLine("Enter Customer Username to be Searched:");
+                                                                string CUSTOMER_ID = Console.ReadLine();
+                                                                Customer customer = employeeservice.SearchCustomerById(CUSTOMER_ID);
+                                                                if (customer != null)
+                                                                {
+                                                                    Console.WriteLine($"First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} Aadhar Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("Invalid User Name");
+                                                                }
+                                                            }
+                                                            break;
+                                                        case 4:
+                                                            {
+                                                                // Delete Customer Part
+                                                                Console.WriteLine("Enter Customer Username: ");
+                                                                string CUSTOMER_ID = Console.ReadLine();
+                                                                employeeservice.DeleteCustomerById(CUSTOMER_ID);
+                                                                Console.WriteLine("Employee Deleted Successfully.");
+                                                            }
+                                                            break;
+                                                        case 5:
+                                                            {
+                                                                Environment.Exit(0); //exit application
+                                                            }
+                                                            break;
+                                                        default:
+                                                            {
+                                                                Console.WriteLine("Invalid Choice");
+                                                            }
+                                                            break;
                                                     }
-                                                    break;
-                                                case 3:
-                                                    {
-                                                        // Update Customer Part
-                                                    }
-                                                    break;
-                                                case 4:
-                                                    {
-                                                        // Search Customer Part
-                                                        
-                                                    }
-                                                    break;
-                                                case 5:
-                                                    {
-                                                        // Delete Customer Part
-                                                        Console.WriteLine("Enter Customer Username: ");
-                                                        string CUSTOMER_ID = Console.ReadLine();
-                                                        employeeservice.DeleteCustomerById(CUSTOMER_ID);
-                                                    }
-                                                    break;
-                                                case 6:
-                                                    {
-                                                        Environment.Exit(0); //exit application
-                                                    }
-                                                    break;
-                                                default:
-                                                    {
-                                                        Console.WriteLine("Invalid Choice");
-                                                    }
-                                                    break;
+
+                                                } while (true);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Login Failed.");
                                             }
                                         }
                                         break;                                    
