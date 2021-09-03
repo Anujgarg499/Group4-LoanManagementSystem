@@ -13,3 +13,5 @@ E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem
 E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.dll
 E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\ref\LoanManagementSystem.BAL.dll
 E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\obj\Debug\net5.0\LoanManagementSystem.BAL.pdb
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.DAL.dll
+E:\CG\.net\Group4-LoanManagementSystem\LoanManagementSystem\LoanManagementSystem.BuisnessLayer\bin\Debug\net5.0\LoanManagementSystem.DAL.pdb

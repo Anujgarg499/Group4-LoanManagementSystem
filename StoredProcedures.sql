@@ -1,9 +1,9 @@
 -- Stored Procedure for Add Customer
-create procedure AddCustomer(@CUSTOMER_ID varchar(20),@FIRST_NAME varchar(20),@LAST_NAME varchar(20),@ADDRESS varchar(20),@PAN_NUMBER varchar(20),@AADHAR_NUMBER numeric(15,0),@CONTACT_NUMBER numeric(15,0),@EMAIL varchar(20),@DOB varchar(20),
+create procedure AddCustomer(@CUSTOMER_ID varchar(20),@FIRST_NAME varchar(20),@LAST_NAME varchar(20),@CUSTOMER_PASSWORD varchar(30),@ADDRESS varchar(20),@PAN_NUMBER varchar(20),@AADHAR_NUMBER numeric(15,0),@CONTACT_NUMBER numeric(15,0),@EMAIL varchar(20),@DOB varchar(20),
 @CREDIT_LIMIT numeric(15,0),@LAST_UPDATED_CREDIT_DATE Date)
 as
 begin
-insert into Customer values(@CUSTOMER_ID, @FIRST_NAME ,@LAST_NAME, @ADDRESS, @PAN_NUMBER, @AADHAR_NUMBER, @CONTACT_NUMBER, @EMAIL ,@DOB, @CREDIT_LIMIT, @LAST_UPDATED_CREDIT_DATE)
+insert into Customer values(@CUSTOMER_ID, @FIRST_NAME ,@LAST_NAME,@CUSTOMER_PASSWORD, @ADDRESS, @PAN_NUMBER, @AADHAR_NUMBER, @CONTACT_NUMBER, @EMAIL ,@DOB, @CREDIT_LIMIT, @LAST_UPDATED_CREDIT_DATE)
 end
 
 -- Stored procedure for view customers

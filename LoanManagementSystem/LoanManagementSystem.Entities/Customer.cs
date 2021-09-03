@@ -8,6 +8,7 @@ namespace LoanManagementSystem.Entities
         public string CUSTOMER_ID { get; set; }
         public string FIRST_NAME { get; set; }
         public string LAST_NAME { get; set; }
+        public string CUSTOMER_PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         public string PAN_NUMBER { get; set; }
         public decimal AADHAR_NUMBER { get; set; }

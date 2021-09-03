@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LoanManagementSystem.DataLayer\LoanManagementSystem.DAL.csproj" />
     <ProjectReference Include="..\LoanManagementSystem.Entities\LoanManagementSystem.Entities.csproj" />
   </ItemGroup>
 

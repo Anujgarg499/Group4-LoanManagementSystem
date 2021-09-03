@@ -8,6 +8,7 @@ namespace LoanManagementSystem.UI
     {
         static void Main(string[] args)
         {
+            CustomerService service = new CustomerService();
             try
             {
                 do
@@ -33,6 +34,33 @@ namespace LoanManagementSystem.UI
                                     case 1:
                                         {
                                             // Register part to be implemented here
+                                            Customer customer = new Customer();
+                                            Console.WriteLine("Enter Customer Username: ");
+                                            customer.CUSTOMER_ID = Console.ReadLine();
+                                            Console.WriteLine("Enter Customer First Name: ");
+                                            customer.FIRST_NAME = Console.ReadLine();
+                                            Console.WriteLine("Enter Customer Last Name: ");
+                                            customer.LAST_NAME = Console.ReadLine();
+                                            Console.WriteLine("Enter Password: ");
+                                            customer.CUSTOMER_PASSWORD = Console.ReadLine();
+                                            Console.WriteLine("Enter Address: ");
+                                            customer.ADDRESS = Console.ReadLine();
+                                            Console.WriteLine("Enter Pan Number: ");
+                                            customer.PAN_NUMBER = Console.ReadLine();
+                                            Console.WriteLine("Enter Aadhar Number: ");
+                                            customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
+                                            Console.WriteLine("Enter Contact Number: ");
+                                            customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
+                                            Console.WriteLine("Enter Email Id: ");
+                                            customer.EMAIL = Console.ReadLine();
+                                            Console.WriteLine("Enter DOB: ");
+                                            customer.DOB = Console.ReadLine();
+                                            Console.WriteLine("Enter Loan Amount: ");
+                                            customer.CREDIT_LIMIT = decimal.Parse(Console.ReadLine());
+                                            Console.WriteLine("Enter Tenure Date: ");
+                                            customer.LAST_UPDATED_CREDIT_DATE = DateTime.Parse(Console.ReadLine());
+                                            service.AddCustomer(customer);
+                                            Console.WriteLine("Customer Registration Successful..");
                                         }
                                         break;
                                     case 2:

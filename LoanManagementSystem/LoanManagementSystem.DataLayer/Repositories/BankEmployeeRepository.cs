@@ -15,7 +15,25 @@ namespace LoanManagementSystem.DAL.Repositories
         SqlCommand command = null;
         public void DeleteCustomerById(string CUSTOMER_ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                command = new SqlCommand("DeleteCustomerById", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //passing value to query-paramenters
+                command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                connection.Open(); //open connnection
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public bool IsLoanApproved(string CUSTOMER_ID)
@@ -74,7 +92,43 @@ namespace LoanManagementSystem.DAL.Repositories
 
         public List<Customer> ViewCustomers()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Customer> customers = null;
+                command = new SqlCommand("UpdateCustomerById", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                }; 
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    customers = new List<Customer>();
+                    while (dr.Read())
+                    {
+                        customers.Add(new Customer()
+                        {                            
+                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
+                            LAST_NAME = dr["LAST_NAME"].ToString(),
+                            ADDRESS = dr["ADDRESS"].ToString(),
+                            PAN_NUMBER = dr["PAN_NUMBER"].ToString(),
+                            AADHAR_NUMBER = (decimal)dr["AADHAR_NUMBER"],
+                            CONTACT_NUMBER = (decimal)dr["CONTACT_NUMBER"],
+                            EMAIL = dr["EMAIL"].ToString(),
+                            DOB = dr["DOB"].ToString(),                            
+                        });
+                    }
+                }
+                return customers;
+            }
+    catch (Exception ex)
+    {
+        throw ex;
+    }
+    finally
+{
+    connection.Close();
+}
         }
     }
 }
