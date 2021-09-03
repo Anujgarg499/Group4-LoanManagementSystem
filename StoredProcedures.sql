@@ -29,9 +29,8 @@ create procedure UpdateCustomerById(@CUSTOMER_ID varchar(20),
                 @AADHAR_NUMBER numeric(15,0),
                 @CONTACT_NUMBER numeric(15,0),
                 @EMAIL varchar(20),
-                @DOB varchar(20),
-                @CREDIT_LIMIT numeric(15,0),
-                @LAST_UPDATED_CREDIT_DATE Date)
+                @DOB varchar(20))
+               
 as
 begin
 update Customer set FIRST_NAME = @FIRST_NAME, 
@@ -44,7 +43,7 @@ update Customer set FIRST_NAME = @FIRST_NAME,
 						  DOB = @DOB
 						  where CUSTOMER_ID=@CUSTOMER_ID
 end
-
+-- drop procedure UpdateCustomerById
 -- Stored Procedure Delete Customer By Id
 create procedure DeleteCustomerById(@CUSTOMER_ID varchar(20))
 as
@@ -66,4 +65,11 @@ CREATE PROCEDURE IsLoginEmployee
 AS
 BEGIN
       SELECT * from BANK_EMPLOYEE where EmpId=@EmpId and EmpPassword=@EmpPassword
+end
+
+--Stored Procedure Check Status
+create procedure CheckStatus(@CUSTOMER_ID varchar(20))
+as
+begin
+select LOAN_STATUS from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID
 end
