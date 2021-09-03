@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using LoanManagementSystem.BAL;
 using LoanManagementSystem.Entities;
 
@@ -8,7 +9,8 @@ namespace LoanManagementSystem.UI
     {
         static void Main(string[] args)
         {
-            CustomerService service = new CustomerService();
+            CustomerService customerservice = new CustomerService();
+            EmployeeService employeeservice = new EmployeeService();
             try
             {
                 do
@@ -54,51 +56,61 @@ namespace LoanManagementSystem.UI
                                             Console.WriteLine("Enter Email Id: ");
                                             customer.EMAIL = Console.ReadLine();
                                             Console.WriteLine("Enter DOB: ");
-                                            customer.DOB = Console.ReadLine();
-                                            Console.WriteLine("Enter Loan Amount: ");
-                                            customer.CREDIT_LIMIT = decimal.Parse(Console.ReadLine());
-                                            Console.WriteLine("Enter Tenure Date: ");
-                                            customer.LAST_UPDATED_CREDIT_DATE = DateTime.Parse(Console.ReadLine());
-                                            service.AddCustomer(customer);
+                                            customer.DOB = Console.ReadLine();                                            
+                                            customer.CREDIT_LIMIT = 500000;
+                                            customer.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
+                                            customerservice.AddCustomer(customer);
                                             Console.WriteLine("Customer Registration Successful..");
                                         }
                                         break;
                                     case 2:
                                         {
                                             // After Login Section
-                                            Console.WriteLine("1. Apply For Loan");
-                                            Console.WriteLine("2. Check Status");
-                                            Console.WriteLine("3. Update Customer Details");
-                                            Console.WriteLine("4. Exit");
-                                            Console.WriteLine("Enter your choice: ");
-                                            int Customerchoice1 = int.Parse(Console.ReadLine());
-                                            switch (Customerchoice1)
+                                            Console.WriteLine("Enter Customer Username: ");
+                                            string CUSTOMER_ID= Console.ReadLine();
+                                            Console.WriteLine("Enter Password: ");
+                                            string CUSTOMER_PASSWORD = Console.ReadLine();
+                                            bool checklogin = customerservice.IsLoginCustomer(CUSTOMER_ID,CUSTOMER_PASSWORD);
+                                            if (checklogin == true)
                                             {
-                                                case 1:
-                                                    {
-                                                        // Apply For Loan Part to be implemented here
-                                                    }
-                                                    break;
-                                                case 2:
-                                                    {
-                                                        // Check Status Part
-                                                    }
-                                                    break;
-                                                case 3:
-                                                    {
-                                                        // Update Customer Part
-                                                    }
-                                                    break;
-                                                case 4:
-                                                    {
-                                                        Environment.Exit(0); //exit application
-                                                    }
-                                                    break;
-                                                default:
-                                                    {
-                                                        Console.WriteLine("Invalid Choice");
-                                                    }
-                                                    break;
+                                                Console.WriteLine("1. Apply For Loan");
+                                                Console.WriteLine("2. Check Status");
+                                                Console.WriteLine("3. Update Customer Details");
+                                                Console.WriteLine("4. Exit");
+                                                Console.WriteLine("Enter your choice: ");
+                                                int Customerchoice1 = int.Parse(Console.ReadLine());
+                                                switch (Customerchoice1)
+                                                {
+                                                    case 1:
+                                                        {
+                                                            // Apply For Loan Part to be implemented here
+                                                        }
+                                                        break;
+                                                    case 2:
+                                                        {
+                                                            // Check Status Part
+                                                        }
+                                                        break;
+                                                    case 3:
+                                                        {
+                                                            // Update Customer Part
+                                                        }
+                                                        break;
+                                                    case 4:
+                                                        {
+                                                            Environment.Exit(0); //exit application
+                                                        }
+                                                        break;
+                                                    default:
+                                                        {
+                                                            Console.WriteLine("Invalid Choice");
+                                                        }
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Login Failed.");
                                             }
                                         }
                                         break;
@@ -130,8 +142,9 @@ namespace LoanManagementSystem.UI
                                             Console.WriteLine("1. Loan Processing ");
                                             Console.WriteLine("2. View Customers");
                                             Console.WriteLine("3. Update Customers");
-                                            Console.WriteLine("4. Delete Customers");
-                                            Console.WriteLine("5. Exit");
+                                            Console.WriteLine("4. Search Customer");
+                                            Console.WriteLine("5. Delete Customers");                                        
+                                            Console.WriteLine("6. Exit");
                                             Console.WriteLine("Enter your choice: ");
                                             int Customerchoice1 = int.Parse(Console.ReadLine());
                                             switch (Customerchoice1)
@@ -144,6 +157,18 @@ namespace LoanManagementSystem.UI
                                                 case 2:
                                                     {
                                                         // View Customers part
+                                                        List<Customer> customers = employeeservice.ViewCustomers();
+                                                        if (customers != null)
+                                                        {
+                                                            foreach (var customer in customers)
+                                                            {
+                                                                Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} {customer.CUSTOMER_PASSWORD} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} AADHAR Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("No Customers available.");
+                                                        }
                                                     }
                                                     break;
                                                 case 3:
@@ -153,10 +178,19 @@ namespace LoanManagementSystem.UI
                                                     break;
                                                 case 4:
                                                     {
-                                                        // Delete Customer Part
+                                                        // Search Customer Part
+                                                        
                                                     }
                                                     break;
                                                 case 5:
+                                                    {
+                                                        // Delete Customer Part
+                                                        Console.WriteLine("Enter Customer Username: ");
+                                                        string CUSTOMER_ID = Console.ReadLine();
+                                                        employeeservice.DeleteCustomerById(CUSTOMER_ID);
+                                                    }
+                                                    break;
+                                                case 6:
                                                     {
                                                         Environment.Exit(0); //exit application
                                                     }

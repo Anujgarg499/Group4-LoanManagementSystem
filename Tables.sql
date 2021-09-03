@@ -3,24 +3,28 @@ create database LoanManagementSystem
 use LoanManagementSystem
 
 -- Customer Table
+drop table Customer
 create table Customer(
 CUSTOMER_ID varchar(20) primary key not null,
 FIRST_NAME varchar(20) not null,
 LAST_NAME varchar(20) not null,
+CUSTOMER_PASSWORD varchar(30) not null,
 ADDRESS varchar(20),
 PAN_NUMBER varchar(20),
 AADHAR_NUMBER numeric(15,0),
 CONTACT_NUMBER numeric(15,0),
 EMAIL varchar(20),
 DOB varchar(20),
-CREDIT_LIMIT numeric(15,0),
-LAST_UPDATED_CREDIT_DATE Date
+CREDIT_LIMIT numeric(15,0) null,
+LAST_UPDATED_CREDIT_DATE Date null
 )
 
 -- Employee Table
+drop table BANK_EMPLOYEE
 create table BANK_EMPLOYEE(
-EmpId varchar(20) primary key,
-EmpName varchar(20),
+EmpId varchar(20) primary key not null,
+EmpName varchar(20) not null,
+EmpPassword varchar(30) not null,
 CONTACT_NUMBER numeric(10),
 EMAIL varchar(20),
 EMP_TYPE varchar(20) check(EMP_TYPE in('Contract Based','Permanent'))

@@ -50,8 +50,30 @@ namespace LoanManagementSystem.DAL.Repositories
 
         public bool IsLoginCustomer(string CUSTOMER_ID, string CUSTOMER_PASSWORD)
         {
-            throw new NotImplementedException();
-        }
+			try
+			{
+				bool loginsuccessful = false;
+				command = new SqlCommand("IsLoginCustomer", connection)
+				{
+					CommandType = CommandType.StoredProcedure
+				};
+				command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+				command.Parameters.AddWithValue("@CUSTOMER_PASSWORD", CUSTOMER_PASSWORD);
+				connection.Open(); //open connnection
+				SqlDataReader dr = command.ExecuteReader();
+				loginsuccessful = dr.HasRows;
+				return loginsuccessful;
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+			finally
+			{
+				connection.Close();
+			}
+		}
 
         public void UpdateCustomerById(Customer customer)
         {

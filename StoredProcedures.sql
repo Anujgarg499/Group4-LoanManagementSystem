@@ -52,3 +52,10 @@ as
 begin
 delete from Customer where CUSTOMER_ID=@CUSTOMER_ID
 end
+
+-- Stored Procedure to check customer login part 
+create procedure IsLoginCustomer(@CUSTOMER_ID varchar(20),@CUSTOMER_PASSWORD varchar(30))
+as
+begin
+select * from Customer where CUSTOMER_ID=@CUSTOMER_ID and CUSTOMER_PASSWORD=@CUSTOMER_PASSWORD
+end

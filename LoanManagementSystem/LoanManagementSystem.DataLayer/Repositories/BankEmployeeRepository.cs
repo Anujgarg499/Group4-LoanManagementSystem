@@ -9,7 +9,7 @@ using LoanManagementSystem.Entities;
 
 namespace LoanManagementSystem.DAL.Repositories
 {
-    class BankEmployeeRepository : IBankEmployeeRepository
+    public class BankEmployeeRepository : IBankEmployeeRepository
     {
         SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
         SqlCommand command = null;
@@ -95,7 +95,7 @@ namespace LoanManagementSystem.DAL.Repositories
             try
             {
                 List<Customer> customers = null;
-                command = new SqlCommand("UpdateCustomerById", connection)
+                command = new SqlCommand("ViewCustomers", connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 }; 

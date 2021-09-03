@@ -21,5 +21,18 @@ namespace LoanManagementSystem.BAL
         {
             repository.UpdateCustomerById(customer);
         }
+        // Invoking IsLoginCustomer checking
+        public bool IsLoginCustomer(string CUSTOMER_ID, string CUSTOMER_PASSWORD)
+        {
+            bool check = repository.IsLoginCustomer(CUSTOMER_ID,CUSTOMER_PASSWORD);
+            if (check == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
