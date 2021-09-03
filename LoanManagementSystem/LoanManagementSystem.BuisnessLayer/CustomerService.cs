@@ -34,5 +34,15 @@ namespace LoanManagementSystem.BAL
                 return false;
             }
         }
+        // Invoking Apply Loan
+        public void ApplyLoan(LoanDetails loandetails)
+        {
+            repository.ApplyLoan(loandetails);
+        }
+        public string CheckLoanStatus(string CUSTOMER_ID)
+        {
+            string loanstatus = repository.CheckLoanStatus(CUSTOMER_ID);
+            return loanstatus;
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace LoanManagementSystem.DAL.Repositories
         void AddCustomer(Customer customer);
         void UpdateCustomerById(Customer customer);
         bool IsLoginCustomer(string CUSTOMER_ID,string CUSTOMER_PASSWORD);
+        void ApplyLoan(LoanDetails loandetails);
+        string CheckLoanStatus(string CUSTOMER_ID);
     }
 }

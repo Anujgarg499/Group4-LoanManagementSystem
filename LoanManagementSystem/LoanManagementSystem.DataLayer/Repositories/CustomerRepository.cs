@@ -107,5 +107,69 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
-    }
+		public void ApplyLoan(LoanDetails loandetails)
+        {
+            try
+            {
+                command = new SqlCommand("ApplyLoan", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //passing value to query-paramenters                
+                command.Parameters.AddWithValue("@LOAN_AMOUNT", loandetails.LOAN_AMOUNT);
+                command.Parameters.AddWithValue("@CUSTOMER_ID", loandetails.CUSTOMER_ID);
+                command.Parameters.AddWithValue("@EmpId", loandetails.EmpId);
+                command.Parameters.AddWithValue("@LOAN_TYPE", loandetails.LOAN_TYPE);
+                command.Parameters.AddWithValue("@LOAN_APPROVED_DATE", loandetails.LOAN_APPROVED_DATE);
+                command.Parameters.AddWithValue("@LOAN_STATUS", loandetails.LOAN_STATUS);
+                command.Parameters.AddWithValue("@DISPERSAL_DATE", loandetails.DISPERSAL_DATE);
+                command.Parameters.AddWithValue("@INTEREST_RATE", loandetails.INTEREST_RATE);
+                command.Parameters.AddWithValue("@TENURE", loandetails.TENURE);
+                command.Parameters.AddWithValue("@EMI_START_DATE", loandetails.EMI_START_DATE);
+                command.Parameters.AddWithValue("@EMI_END_DATE", loandetails.EMI_END_DATE);
+                command.Parameters.AddWithValue("@EMI_AMOUNT", loandetails.EMI_AMOUNT);
+                command.Parameters.AddWithValue("@CREDIT_LIMIT", loandetails.CREDIT_LIMIT);
+                command.Parameters.AddWithValue("@LAST_UPDATED_CREDIT_DATE", loandetails.LAST_UPDATED_CREDIT_DATE);
+                command.Parameters.AddWithValue("@CUSTOMER_ASSET_ID", loandetails.CUSTOMER_ASSET_ID);
+                connection.Open(); //open connnection
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+		public string CheckLoanStatus(string CUSTOMER_ID)
+        {
+            try
+            {
+                string status = "";                
+                command = new SqlCommand("CheckStatus", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                connection.Open(); //open connnection
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    status = dr["LOAN_STATUS"].ToString();                
+                }
+                return status;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+	}
 }

@@ -85,11 +85,37 @@ namespace LoanManagementSystem.UI
                                                     case 1:
                                                         {
                                                             // Apply For Loan Part to be implemented here
+                                                            LoanDetails loanDetails = new LoanDetails();
+                                                            Console.Write("Enter Customer Username:");
+                                                            loanDetails.CUSTOMER_ID = Console.ReadLine();
+                                                            Console.WriteLine("Enter type of loan(Home Loan, Vehicle Loan, Educational Loan)");
+                                                            loanDetails.LOAN_TYPE = Console.ReadLine();
+                                                            Console.Write("Enter Loan Amount:");
+                                                            loanDetails.LOAN_AMOUNT = decimal.Parse(Console.ReadLine());
+                                                            Console.Write("Enter Tenure:");
+                                                            loanDetails.TENURE = decimal.Parse(Console.ReadLine());
+                                                            loanDetails.EmpId = "Akash35";
+                                                            loanDetails.LOAN_APPROVED_DATE = DateTime.Now;
+                                                            loanDetails.LOAN_STATUS = "Pending";
+                                                            loanDetails.DISPERSAL_DATE = DateTime.Now;
+                                                            loanDetails.INTEREST_RATE = 7;
+                                                            loanDetails.EMI_START_DATE = DateTime.Now;
+                                                            loanDetails.EMI_END_DATE = DateTime.Now;
+                                                            loanDetails.EMI_AMOUNT = 1500;
+                                                            loanDetails.CREDIT_LIMIT = 200000;
+                                                            loanDetails.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
+                                                            loanDetails.CUSTOMER_ASSET_ID = 3;
+                                                            customerservice.ApplyLoan(loanDetails);
+                                                            Console.WriteLine("Loan Application Submitted Sucessfully.");
                                                         }
                                                         break;
                                                     case 2:
                                                         {
                                                             // Check Status Part
+                                                            Console.WriteLine("Enter Customer Username: ");
+                                                            string customerid = Console.ReadLine();
+                                                            string status = customerservice.CheckLoanStatus(CUSTOMER_ID);
+                                                            Console.WriteLine($"Loan Status is : {status}");
                                                         }
                                                         break;
                                                     case 3:
