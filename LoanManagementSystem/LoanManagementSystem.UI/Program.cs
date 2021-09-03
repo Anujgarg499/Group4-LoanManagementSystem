@@ -7,6 +7,7 @@ namespace LoanManagementSystem.UI
 {
     class Program
     {
+        // Structure of UI By: Anuj Garg
         static void Main(string[] args)
         {
             CustomerService customerservice = new CustomerService();
@@ -35,7 +36,7 @@ namespace LoanManagementSystem.UI
                                 {
                                     case 1:
                                         {
-                                            // Register part to be implemented here
+                                            // Register part implemented By: Anuj Garg
                                             Customer customer = new Customer();
                                             Console.WriteLine("Enter Customer Username: ");
                                             customer.CUSTOMER_ID = Console.ReadLine();
@@ -93,7 +94,7 @@ namespace LoanManagementSystem.UI
                                                         break;
                                                     case 3:
                                                         {
-                                                            // Update Customer Part                                                            
+                                                            // Update Customer Part By: Arjoo                                                          
                                                             Customer customer = new Customer();
                                                             //getting values from user
                                                             Console.WriteLine("Enter Customer Username: ");
@@ -186,7 +187,7 @@ namespace LoanManagementSystem.UI
                                                             break;
                                                         case 2:
                                                             {
-                                                                // View Customers part
+                                                                // View Customers part By: Anuj Garg
                                                                 List<Customer> customers = employeeservice.ViewCustomers();
                                                                 if (customers != null)
                                                                 {
@@ -203,7 +204,7 @@ namespace LoanManagementSystem.UI
                                                             break;                                                        
                                                         case 3:
                                                             {
-                                                                // Search Customer Part
+                                                                // Search Customer Part By: Arjoo
                                                                 Console.WriteLine("Enter Customer Username to be Searched:");
                                                                 string CUSTOMER_ID = Console.ReadLine();
                                                                 Customer customer = employeeservice.SearchCustomerById(CUSTOMER_ID);
@@ -219,7 +220,7 @@ namespace LoanManagementSystem.UI
                                                             break;
                                                         case 4:
                                                             {
-                                                                // Delete Customer Part
+                                                                // Delete Customer Part By: Anuj Garg
                                                                 Console.WriteLine("Enter Customer Username: ");
                                                                 string CUSTOMER_ID = Console.ReadLine();
                                                                 employeeservice.DeleteCustomerById(CUSTOMER_ID);

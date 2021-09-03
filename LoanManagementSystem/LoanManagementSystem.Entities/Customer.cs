@@ -2,6 +2,7 @@
 
 namespace LoanManagementSystem.Entities
 {
+    // Entities For Customer By: Hari
     public class Customer
     {
         // Getting and Setting Customer Entities Details

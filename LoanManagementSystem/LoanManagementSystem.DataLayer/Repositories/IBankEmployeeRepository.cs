@@ -7,6 +7,7 @@ using LoanManagementSystem.Entities;
 
 namespace LoanManagementSystem.DAL.Repositories
 {
+    // Bank Employee Interface By: Arjoo 
     public interface IBankEmployeeRepository
     {
         bool IsLoginBankEmployee(string EmpId,string EmpPassword);

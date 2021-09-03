@@ -10,9 +10,11 @@ using LoanManagementSystem.Entities;
 namespace LoanManagementSystem.DAL.Repositories
 {
     public class BankEmployeeRepository : IBankEmployeeRepository
-    {
+    { 
+        // For Sql Connection
         SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
         SqlCommand command = null;
+        // For Deleting Customer By:Anuj Garg
         public void DeleteCustomerById(string CUSTOMER_ID)
         {
             try
@@ -40,6 +42,7 @@ namespace LoanManagementSystem.DAL.Repositories
         {
             throw new NotImplementedException();
         }
+        // To check Employee Login By: Amulya
         public bool IsLoginBankEmployee(string EmpId, string EmpPassword)
         {
             try
@@ -66,7 +69,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
-
+        // To Search Customer By Id By: Arjoo
         public Customer SearchCustomerById(string CUSTOMER_ID)
         {
             try
@@ -109,7 +112,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
-
+        // To View All the Customers By: Sahithi
         public List<Customer> ViewCustomers()
         {
             try

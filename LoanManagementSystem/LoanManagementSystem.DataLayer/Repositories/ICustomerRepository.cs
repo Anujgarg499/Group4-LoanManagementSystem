@@ -7,6 +7,7 @@ using LoanManagementSystem.Entities;
 
 namespace LoanManagementSystem.DAL.Repositories
 {
+    // Customer Interface By: Anuj 
     public interface ICustomerRepository
     {
         void AddCustomer(Customer customer);

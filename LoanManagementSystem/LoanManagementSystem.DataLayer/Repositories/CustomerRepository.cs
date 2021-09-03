@@ -11,8 +11,10 @@ namespace LoanManagementSystem.DAL.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
+		// For SQl Connection
 		SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
 		SqlCommand command = null;
+		// For Adding Customer By:Sonali
 		public void AddCustomer(Customer customer)
         {
 			try
@@ -47,7 +49,7 @@ namespace LoanManagementSystem.DAL.Repositories
 				connection.Close();
 			}
 		}
-
+		// To Check Customer Login By: Sonali
         public bool IsLoginCustomer(string CUSTOMER_ID, string CUSTOMER_PASSWORD)
         {
 			try
@@ -74,7 +76,7 @@ namespace LoanManagementSystem.DAL.Repositories
 				connection.Close();
 			}
 		}
-
+		// For Updating Customer By:Hari
         public void UpdateCustomerById(Customer customer)
         {
             try
