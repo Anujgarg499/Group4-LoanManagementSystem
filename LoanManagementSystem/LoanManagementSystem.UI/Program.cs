@@ -36,32 +36,38 @@ namespace LoanManagementSystem.UI
                                 {
                                     case 1:
                                         {
-                                            // Register part implemented By: Anuj Garg
-                                            Customer customer = new Customer();
-                                            Console.WriteLine("Enter Customer Username: ");
-                                            customer.CUSTOMER_ID = Console.ReadLine();
-                                            Console.WriteLine("Enter Customer First Name: ");
-                                            customer.FIRST_NAME = Console.ReadLine();
-                                            Console.WriteLine("Enter Customer Last Name: ");
-                                            customer.LAST_NAME = Console.ReadLine();
-                                            Console.WriteLine("Enter Password: ");
-                                            customer.CUSTOMER_PASSWORD = Console.ReadLine();
-                                            Console.WriteLine("Enter Address: ");
-                                            customer.ADDRESS = Console.ReadLine();
-                                            Console.WriteLine("Enter Pan Number: ");
-                                            customer.PAN_NUMBER = Console.ReadLine();
-                                            Console.WriteLine("Enter Aadhar Number: ");
-                                            customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
-                                            Console.WriteLine("Enter Contact Number: ");
-                                            customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
-                                            Console.WriteLine("Enter Email Id: ");
-                                            customer.EMAIL = Console.ReadLine();
-                                            Console.WriteLine("Enter DOB: ");
-                                            customer.DOB = Console.ReadLine();                                            
-                                            customer.CREDIT_LIMIT = 500000;
-                                            customer.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
-                                            customerservice.AddCustomer(customer);
-                                            Console.WriteLine("Customer Registration Successful..");
+                                            try
+                                            {
+                                                // Register part implemented By: Anuj Garg
+                                                Customer customer = new Customer();
+                                                Console.WriteLine("Enter Customer Username: ");
+                                                customer.CUSTOMER_ID = Console.ReadLine();
+                                                Console.WriteLine("Enter Customer First Name: ");
+                                                customer.FIRST_NAME = Console.ReadLine();
+                                                Console.WriteLine("Enter Customer Last Name: ");
+                                                customer.LAST_NAME = Console.ReadLine();
+                                                Console.WriteLine("Enter Password: ");
+                                                customer.CUSTOMER_PASSWORD = Console.ReadLine();
+                                                Console.WriteLine("Enter Address: ");
+                                                customer.ADDRESS = Console.ReadLine();
+                                                Console.WriteLine("Enter Pan Number: ");
+                                                customer.PAN_NUMBER = Console.ReadLine();
+                                                Console.WriteLine("Enter Aadhar Number: ");
+                                                customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
+                                                Console.WriteLine("Enter Contact Number: ");
+                                                customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
+                                                Console.WriteLine("Enter Email Id: ");
+                                                customer.EMAIL = Console.ReadLine();
+                                                Console.WriteLine("Enter DOB: ");
+                                                customer.DOB = Console.ReadLine();
+                                                customer.CREDIT_LIMIT = 500000;
+                                                customer.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
+                                                customerservice.AddCustomer(customer);
+                                                Console.WriteLine("Customer Registration Successful..");
+                                            }catch(Exception ex)
+                                            {
+                                                Console.WriteLine(ex.Message);
+                                            }
                                         }
                                         break;
                                     case 2:
@@ -84,29 +90,24 @@ namespace LoanManagementSystem.UI
                                                 {
                                                     case 1:
                                                         {
-                                                            // Apply For Loan Part to be implemented here
-                                                            LoanDetails loanDetails = new LoanDetails();
-                                                            Console.Write("Enter Customer Username:");
-                                                            loanDetails.CUSTOMER_ID = Console.ReadLine();
-                                                            Console.WriteLine("Enter type of loan(Home Loan, Vehicle Loan, Educational Loan)");
-                                                            loanDetails.LOAN_TYPE = Console.ReadLine();
-                                                            Console.Write("Enter Loan Amount:");
-                                                            loanDetails.LOAN_AMOUNT = decimal.Parse(Console.ReadLine());
-                                                            Console.Write("Enter Tenure:");
-                                                            loanDetails.TENURE = decimal.Parse(Console.ReadLine());
-                                                            loanDetails.EmpId = "Akash35";
-                                                            loanDetails.LOAN_APPROVED_DATE = DateTime.Now;
-                                                            loanDetails.LOAN_STATUS = "Pending";
-                                                            loanDetails.DISPERSAL_DATE = DateTime.Now;
-                                                            loanDetails.INTEREST_RATE = 7;
-                                                            loanDetails.EMI_START_DATE = DateTime.Now;
-                                                            loanDetails.EMI_END_DATE = DateTime.Now;
-                                                            loanDetails.EMI_AMOUNT = 1500;
-                                                            loanDetails.CREDIT_LIMIT = 200000;
-                                                            loanDetails.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
-                                                            loanDetails.CUSTOMER_ASSET_ID = 3;
-                                                            customerservice.ApplyLoan(loanDetails);
-                                                            Console.WriteLine("Loan Application Submitted Sucessfully.");
+                                                            try
+                                                            {
+                                                                // Apply For Loan Part to be implemented here
+                                                                LoanDetails loanDetails = new LoanDetails();
+                                                                Console.Write("Enter Customer Username:");
+                                                                loanDetails.CUSTOMER_ID = Console.ReadLine();
+                                                                Console.Write("Enter type of loan(Home Loan, Vehicle Loan, Educational Loan):");
+                                                                loanDetails.LOAN_TYPE = Console.ReadLine();
+                                                                Console.Write("Enter Loan Amount:");
+                                                                loanDetails.LOAN_AMOUNT = decimal.Parse(Console.ReadLine());
+                                                                Console.Write("Enter Tenure:");
+                                                                loanDetails.TENURE = decimal.Parse(Console.ReadLine());                                                                
+                                                                customerservice.ApplyLoan(loanDetails);
+                                                                Console.WriteLine("Loan Application Submitted Sucessfully.");
+                                                            }catch(Exception ex)
+                                                            {
+                                                                Console.WriteLine(ex.Message);
+                                                            }
                                                         }
                                                         break;
                                                     case 2:
@@ -209,6 +210,34 @@ namespace LoanManagementSystem.UI
                                                         case 1:
                                                             {
                                                                 // Loan Processing Part to be implemented here
+                                                                List<PendingCustomers> pendingcustomers = employeeservice.ViewPendingCustomers();
+                                                                if (pendingcustomers != null)
+                                                                {
+                                                                    foreach (var customer in pendingcustomers)
+                                                                    {
+                                                                        Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} Loan Account Number:{customer.LOAN_ACC_NUMBER} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} Status:{customer.LOAN_STATUS}");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No Customers available.");
+                                                                }
+                                                                Console.WriteLine("Enter Customer Username: ");
+                                                                string CUSTOMER_ID = Console.ReadLine();
+                                                                Console.WriteLine("Enter Customer Loan Account Number: ");
+                                                                decimal Loanaccount = decimal.Parse(Console.ReadLine());
+                                                                Console.WriteLine("Enter Employee Username: ");
+                                                                string Emp_Id = Console.ReadLine();
+                                                                if (employeeservice.CheckCriteria(CUSTOMER_ID))
+                                                                {
+                                                                    employeeservice.LoanRejection(CUSTOMER_ID,EmpId,Loanaccount);
+                                                                    Console.WriteLine($"After Reviewing Criteria Loan of Customer Username:{CUSTOMER_ID} is Rejected");
+                                                                }
+                                                                else
+                                                                {
+                                                                    employeeservice.LoanApproval(CUSTOMER_ID, EmpId);
+                                                                    Console.WriteLine($"After Reviewing Criteria Loan of Customer Username{CUSTOMER_ID} is Approved");                                                                    
+                                                                }
                                                             }
                                                             break;
                                                         case 2:
@@ -219,7 +248,7 @@ namespace LoanManagementSystem.UI
                                                                 {
                                                                     foreach (var customer in customers)
                                                                     {
-                                                                        Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} {customer.CUSTOMER_PASSWORD} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} AADHAR Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
+                                                                        Console.WriteLine($"Customer Username:{customer.CUSTOMER_ID} First Name:{customer.FIRST_NAME} Last Name:{customer.LAST_NAME} Address:{customer.ADDRESS} PAN Number:{customer.PAN_NUMBER} AADHAR Number:{customer.AADHAR_NUMBER} Contact Number:{customer.CONTACT_NUMBER} Email:{customer.EMAIL} DOB:{customer.DOB}");
                                                                     }
                                                                 }
                                                                 else

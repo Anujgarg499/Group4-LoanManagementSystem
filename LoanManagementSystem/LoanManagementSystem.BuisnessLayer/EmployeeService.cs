@@ -41,5 +41,30 @@ namespace LoanManagementSystem.BAL
                 return false;
             }
         }
+        public List<PendingCustomers> ViewPendingCustomers()
+        {
+            List<PendingCustomers> pendingcustomers = repository.ViewPendingCustomers();
+            return pendingcustomers;
+        }
+        public bool CheckCriteria(string CUSTOMER_ID)
+        {
+            bool isEligible = repository.CheckCriteria(CUSTOMER_ID);
+            if (isEligible == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void LoanApproval(string CUSTOMER_ID, string EmpId)
+        {
+            repository.LoanApproval(CUSTOMER_ID, EmpId);
+        }
+        public void LoanRejection(string CUSTOMER_ID, string EmpId, decimal LOAN_ACC_Number)
+        {
+            repository.LoanRejection(CUSTOMER_ID,EmpId,LOAN_ACC_Number);
+        }
     }
 }

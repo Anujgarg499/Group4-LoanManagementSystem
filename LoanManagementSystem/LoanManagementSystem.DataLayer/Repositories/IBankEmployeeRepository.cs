@@ -14,6 +14,9 @@ namespace LoanManagementSystem.DAL.Repositories
         List<Customer> ViewCustomers();
         Customer SearchCustomerById(string CUSTOMER_ID);
         void DeleteCustomerById(string CUSTOMER_ID);
-        bool IsLoanApproved(string CUSTOMER_ID);
+        void LoanApproval(string CUSTOMER_ID,string EmpId);
+        void LoanRejection(string CUSTOMER_ID, string EmpId,decimal LOAN_ACC_Number);
+        List<PendingCustomers> ViewPendingCustomers();
+        bool CheckCriteria(string CUSTOMER_ID);
     }
 }

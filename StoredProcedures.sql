@@ -74,20 +74,50 @@ begin
 select LOAN_STATUS from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID
 end
 
-create procedure ApplyLoan(@LOAN_AMOUNT numeric,@CUSTOMER_ID varchar(20),@EmpId varchar(20),
-@LOAN_TYPE varchar(20),@LOAN_APPROVED_DATE date,@LOAN_STATUS varchar(30),
-@DISPERSAL_DATE date,@INTEREST_RATE numeric,@TENURE numeric,
-@EMI_START_DATE date,@EMI_END_DATE date,@EMI_AMOUNT numeric,@CREDIT_LIMIT numeric,
-@LAST_UPDATED_CREDIT_DATE date,@CUSTOMER_ASSET_ID numeric)
+-- Stored Procedure For Apply Loan
+create procedure ApplyLoan(@LOAN_AMOUNT numeric,@CUSTOMER_ID varchar(20),@LOAN_TYPE varchar(20),@TENURE numeric)
 as
 begin
 declare @LOAN_ACC_NUMBER numeric(12,0)
 Select @LOAN_ACC_NUMBER=Max(LOAN_ACC_NUMBER) FROM LOAN_DETAILS
 set @LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER+1
-insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,@EmpId,@LOAN_TYPE,@LOAN_APPROVED_DATE,@LOAN_STATUS,@DISPERSAL_DATE,
-@INTEREST_RATE,@TENURE,@EMI_START_DATE,@EMI_END_DATE,
-@EMI_AMOUNT,@CREDIT_LIMIT,@LAST_UPDATED_CREDIT_DATE,
-@CUSTOMER_ASSET_ID)
+insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,getdate(),'Pending',getdate(),7,@TENURE,getdate(),getdate(),1500,200000,getdate(),3)
 End
 
-drop procedure ApplyLoan
+-- drop procedure ApplyLoan
+
+create procedure ViewPendingCustomers
+as
+begin
+select C.CUSTOMER_ID,L.LOAN_ACC_NUMBER,C.FIRST_NAME,C.LAST_NAME,L.LOAN_STATUS from Customer C join LOAN_DETAILS L on C.CUSTOMER_ID=L.CUSTOMER_ID where L.LOAN_STATUS='Pending'
+end
+
+ drop procedure ViewPendingCustomers
+-- exec ViewPendingCustomers
+
+create procedure CheckCriteria(@CUSTOMER_ID varchar(20))
+as
+begin
+select * from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID and LOAN_STATUS = 'Approved'
+end
+drop procedure CheckCriteria
+-- exec CheckCriteria 'abc123'
+
+create procedure LoanApproval(@CUSTOMER_ID varchar(20),@EmpId varchar(20))
+as begin
+declare @TENURE numeric
+select @TENURE = @TENURE from LOAN_DETAILS
+update LOAN_DETAILS
+set EmpId=@EmpId,LOAN_STATUS='Approved',LOAN_APPROVED_DATE=getdate(),EMI_START_DATE=getdate(),EMI_END_DATE=DATEADD(YYYY,@TENURE,EMI_START_DATE)
+where CUSTOMER_ID=@CUSTOMER_ID 
+end
+
+drop Procedure LoanRejection
+
+create procedure LoanRejection(@CUSTOMER_ID varchar(20),@EmpId varchar(20),@LOAN_ACC_NUMBER numeric(12,0))
+as 
+begin
+update LOAN_DETAILS
+set EmpId=@EmpId,LOAN_STATUS='Rejected'
+where CUSTOMER_ID=@CUSTOMER_ID and LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER
+end

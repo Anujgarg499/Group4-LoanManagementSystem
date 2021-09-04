@@ -14,6 +14,34 @@ namespace LoanManagementSystem.DAL.Repositories
         // For Sql Connection
         SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
         SqlCommand command = null;
+
+        public bool CheckCriteria(string CUSTOMER_ID)
+        {
+            try
+            {
+                bool isEligible = false;
+                command = new SqlCommand("CheckCriteria", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //passing value to query-paramenters
+                command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                connection.Open(); //open connnection
+                command.ExecuteNonQuery();
+                SqlDataReader dr = command.ExecuteReader();
+                isEligible = dr.HasRows;
+                return isEligible;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         // For Deleting Customer By:Anuj Garg
         public void DeleteCustomerById(string CUSTOMER_ID)
         {
@@ -37,11 +65,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
-
-        public bool IsLoanApproved(string CUSTOMER_ID)
-        {
-            throw new NotImplementedException();
-        }
+                
         // To check Employee Login By: Amulya
         public bool IsLoginBankEmployee(string EmpId, string EmpPassword)
         {
@@ -69,6 +93,56 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
+
+        public void LoanApproval(string CUSTOMER_ID, string EmpId)
+        {
+            try
+            {
+                command = new SqlCommand("LoanApproval", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //passing value to query-paramenters
+                command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                command.Parameters.AddWithValue("@EmpId", EmpId);
+                connection.Open(); //open connnection
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void LoanRejection(string CUSTOMER_ID, string EmpId, decimal LOAN_ACC_Number)
+        {
+            try
+            {
+                command = new SqlCommand("LoanRejection", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //passing value to query-paramenters
+                command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                command.Parameters.AddWithValue("@EmpId", EmpId);
+                command.Parameters.AddWithValue("@LOAN_ACC_Number", LOAN_ACC_Number);
+                connection.Open(); //open connnection
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         // To Search Customer By Id By: Arjoo
         public Customer SearchCustomerById(string CUSTOMER_ID)
         {
@@ -145,14 +219,52 @@ namespace LoanManagementSystem.DAL.Repositories
                 }
                 return customers;
             }
-    catch (Exception ex)
-    {
-        throw ex;
-    }
-    finally
-{
-    connection.Close();
-}
+                        catch (Exception ex)
+                         {
+                            throw ex;
+                           }
+                         finally
+                        {
+                            connection.Close();
+                         }
+        }
+
+        public List<PendingCustomers> ViewPendingCustomers()
+        {
+            try
+            {
+                List<PendingCustomers> customers = null;
+                command = new SqlCommand("ViewPendingCustomers", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    customers = new List<PendingCustomers>();
+                    while (dr.Read())
+                    {
+                        customers.Add(new PendingCustomers()
+                        {
+                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
+                            LOAN_ACC_NUMBER = (decimal)dr["LOAN_ACC_NUMBER"],
+                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
+                            LAST_NAME = dr["LAST_NAME"].ToString(),
+                            LOAN_STATUS=dr["LOAN_STATUS"].ToString()
+                        });
+                    }
+                }
+                return customers;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
