@@ -118,7 +118,8 @@ namespace LoanManagementSystem.DAL.Repositories
                 //passing value to query-paramenters                
                 command.Parameters.AddWithValue("@LOAN_AMOUNT", loandetails.LOAN_AMOUNT);
                 command.Parameters.AddWithValue("@CUSTOMER_ID", loandetails.CUSTOMER_ID);                
-                command.Parameters.AddWithValue("@LOAN_TYPE", loandetails.LOAN_TYPE);                
+                command.Parameters.AddWithValue("@LOAN_TYPE", loandetails.LOAN_TYPE);
+                command.Parameters.AddWithValue("@INTEREST_RATE", loandetails.INTEREST_RATE);
                 command.Parameters.AddWithValue("@TENURE", loandetails.TENURE);
                 
                 connection.Open(); //open connnection

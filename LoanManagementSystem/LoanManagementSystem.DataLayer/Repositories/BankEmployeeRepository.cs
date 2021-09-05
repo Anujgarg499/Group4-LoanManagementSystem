@@ -83,10 +83,9 @@ namespace LoanManagementSystem.DAL.Repositories
                 loginsuccessful = dr.HasRows;
                 return loginsuccessful;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
             finally
             {
@@ -110,7 +109,7 @@ namespace LoanManagementSystem.DAL.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
             finally
             {
@@ -135,7 +134,7 @@ namespace LoanManagementSystem.DAL.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw ex;
             }
             finally
             {

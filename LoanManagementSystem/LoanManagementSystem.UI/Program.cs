@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using LoanManagementSystem.BAL;
 using LoanManagementSystem.Entities;
+using LoanManagementSystem.BAL.Validations;
 
 namespace LoanManagementSystem.UI
 {
@@ -40,25 +41,93 @@ namespace LoanManagementSystem.UI
                                             {
                                                 // Register part implemented By: Anuj Garg
                                                 Customer customer = new Customer();
-                                                Console.WriteLine("Enter Customer Username: ");
-                                                customer.CUSTOMER_ID = Console.ReadLine();
-                                                Console.WriteLine("Enter Customer First Name: ");
+                                                do
+                                                {
+                                                    Console.Write("Enter Customer Username(Username must be 3 character long can contain[A-Z,a-z,0-9]): ");
+                                                    string input = Console.ReadLine();
+
+                                                    if (Validation.ValidateUsername(input))
+                                                    {
+                                                        customer.CUSTOMER_ID = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid username please try again");
+                                                } while (true);
+                                                //customer.CUSTOMER_ID = Console.ReadLine();
+                                                Console.Write("Enter Customer First Name: ");
                                                 customer.FIRST_NAME = Console.ReadLine();
-                                                Console.WriteLine("Enter Customer Last Name: ");
+                                                Console.Write("Enter Customer Last Name: ");
                                                 customer.LAST_NAME = Console.ReadLine();
-                                                Console.WriteLine("Enter Password: ");
-                                                customer.CUSTOMER_PASSWORD = Console.ReadLine();
-                                                Console.WriteLine("Enter Address: ");
+                                                do
+                                                {
+                                                    Console.Write("Enter Password(Password must be 6 digit long can contain[a-z,0-9,@#$%^&+=]): ");
+                                                    string input = Console.ReadLine();
+
+                                                    if (Validation.ValidatePassword(input))
+                                                    {
+                                                        customer.CUSTOMER_PASSWORD = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid password please try again");
+                                                } while (true);
+
+                                                Console.Write("Enter Address: ");
                                                 customer.ADDRESS = Console.ReadLine();
-                                                Console.WriteLine("Enter Pan Number: ");
-                                                customer.PAN_NUMBER = Console.ReadLine();
-                                                Console.WriteLine("Enter Aadhar Number: ");
-                                                customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
-                                                Console.WriteLine("Enter Contact Number: ");
-                                                customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
-                                                Console.WriteLine("Enter Email Id: ");
-                                                customer.EMAIL = Console.ReadLine();
-                                                Console.WriteLine("Enter DOB: ");
+                                                do
+                                                {
+                                                    Console.Write("Enter Pan Number(Ex. abcde1234z): ");
+                                                    string input = Console.ReadLine();
+
+                                                    if (Validation.ValidatePAN(input))
+                                                    {
+                                                        customer.PAN_NUMBER = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid PAN please try again");
+                                                } while (true);
+                                                do
+                                                {
+                                                    Console.WriteLine("Enter Aadhar Number(Must 12 digit long): ");
+                                                    decimal input = decimal.Parse(Console.ReadLine());
+
+                                                    if (Validation.ValidateAadhar(input))
+                                                    {
+                                                        customer.AADHAR_NUMBER = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid aadhar number please try again");
+                                                } while (true);
+                                                do
+                                                {
+                                                    Console.Write("Enter Contact Number(Must have 10 digit length): ");
+                                                    decimal input = decimal.Parse(Console.ReadLine());
+
+                                                    if (Validation.ValidateContactNumber(input))
+                                                    {
+                                                        customer.CONTACT_NUMBER = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid contact number please try again");
+                                                } while (true);
+                                                do
+                                                {
+                                                    Console.Write("Enter Email Id: ");
+                                                    string input = Console.ReadLine();
+
+                                                    if (Validation.ValidateEmail(input))
+                                                    {
+                                                        customer.EMAIL = input;
+                                                        break;
+                                                    }
+                                                    else
+                                                        Console.WriteLine("Invalid email please try again");
+                                                } while (true);
+                                                Console.WriteLine("Enter Date Of Birth(DD-MM-YYYY): ");
                                                 customer.DOB = Console.ReadLine();
                                                 customer.CREDIT_LIMIT = 500000;
                                                 customer.LAST_UPDATED_CREDIT_DATE = DateTime.Now;
@@ -94,10 +163,40 @@ namespace LoanManagementSystem.UI
                                                             {
                                                                 // Apply For Loan Part to be implemented here
                                                                 LoanDetails loanDetails = new LoanDetails();
-                                                                Console.Write("Enter Customer Username:");
-                                                                loanDetails.CUSTOMER_ID = Console.ReadLine();
-                                                                Console.Write("Enter type of loan(Home Loan, Vehicle Loan, Educational Loan):");
-                                                                loanDetails.LOAN_TYPE = Console.ReadLine();
+                                                                //Console.Write("Enter Customer Username:");
+                                                                //loanDetails.CUSTOMER_ID = Console.ReadLine();
+                                                                do
+                                                                {
+                                                                    Console.Write("Enter Customer Username(Username must be 3 character long can contain[A-Z,a-z,0-9]): ");
+                                                                    string input = Console.ReadLine();
+
+                                                                    if (Validation.ValidateUsername(input))
+                                                                    {
+                                                                        loanDetails.CUSTOMER_ID = input;
+                                                                        break;
+                                                                    }
+                                                                    else
+                                                                        Console.WriteLine("Invalid username please try again");
+                                                                } while (true);
+                                                                Console.WriteLine("Enter type of loan(1.Home Loan\n2.Vehicle Loan\n3.Educational Loan)");
+                                                                int type = int.Parse(Console.ReadLine());
+                                                                switch (type)
+                                                                {
+                                                                    case 1:
+                                                                        loanDetails.LOAN_TYPE = "Home Loan";
+                                                                        loanDetails.INTEREST_RATE = 7;
+                                                                        break;
+                                                                    case 2:
+                                                                        loanDetails.LOAN_TYPE = "Vehicle Loan";
+                                                                        loanDetails.INTEREST_RATE = 8;
+                                                                        break;
+                                                                    case 3:
+                                                                        loanDetails.LOAN_TYPE = "Educational Loan";
+                                                                        loanDetails.INTEREST_RATE = 6;
+                                                                        break;
+
+                                                                }
+                                                                //loanDetails.LOAN_TYPE = Console.ReadLine();
                                                                 Console.Write("Enter Loan Amount:");
                                                                 loanDetails.LOAN_AMOUNT = decimal.Parse(Console.ReadLine());
                                                                 Console.Write("Enter Tenure:");
@@ -123,24 +222,79 @@ namespace LoanManagementSystem.UI
                                                         {
                                                             // Update Customer Part By: Arjoo                                                          
                                                             Customer customer = new Customer();
-                                                            //getting values from user
-                                                            Console.WriteLine("Enter Customer Username: ");
-                                                            customer.CUSTOMER_ID = Console.ReadLine();
+                                                            //getting values from user                                                            
+                                                            do
+                                                            {
+                                                                Console.Write("Enter Customer Username(Username must be 3 character long can contain[A-Z,a-z,0-9]): ");
+                                                                string input = Console.ReadLine();
+
+                                                                if (Validation.ValidateUsername(input))
+                                                                {
+                                                                    customer.CUSTOMER_ID = input;
+                                                                    break;
+                                                                }
+                                                                else
+                                                                    Console.WriteLine("Invalid username please try again");
+                                                            } while (true);
                                                             Console.Write("Enter First Name:");
                                                             customer.FIRST_NAME = Console.ReadLine();
                                                             Console.Write("Enter Last Name:");
                                                             customer.LAST_NAME = Console.ReadLine();
                                                             Console.Write("Enter Address:");
-                                                            customer.ADDRESS = Console.ReadLine();
-                                                            Console.Write("Enter PAN Number:");
-                                                            customer.PAN_NUMBER = Console.ReadLine();
-                                                            Console.Write("Enter Aadhar Number:");
-                                                            customer.AADHAR_NUMBER = decimal.Parse(Console.ReadLine());
-                                                            Console.Write("Enter Contact Number:");
-                                                            customer.CONTACT_NUMBER = decimal.Parse(Console.ReadLine());
-                                                            Console.Write("Enter Email:");
-                                                            customer.EMAIL = Console.ReadLine();
-                                                            Console.Write("Enter Date Of Birth:");
+                                                            customer.ADDRESS = Console.ReadLine();                                                                                                                        
+                                                            do
+                                                            {
+                                                                Console.Write("Enter Pan Number(Ex. abcde1234z): ");
+                                                                string input = Console.ReadLine();
+
+                                                                if (Validation.ValidatePAN(input))
+                                                                {
+                                                                    customer.PAN_NUMBER = input;
+                                                                    break;
+                                                                }
+                                                                else
+                                                                    Console.WriteLine("Invalid PAN please try again");
+                                                            } while (true);
+                                                            do
+                                                            {
+                                                                Console.WriteLine("Enter Aadhar Number(Must 12 digit long): ");
+                                                                decimal input = decimal.Parse(Console.ReadLine());
+
+                                                                if (Validation.ValidateAadhar(input))
+                                                                {
+                                                                    customer.AADHAR_NUMBER = input;
+                                                                    break;
+                                                                }
+                                                                else
+                                                                    Console.WriteLine("Invalid aadhar number please try again");
+                                                            } while (true);
+                                                            do
+                                                            {
+                                                                Console.Write("Enter Contact Number(Must have 10 digit length): ");
+                                                                decimal input = decimal.Parse(Console.ReadLine());
+
+                                                                if (Validation.ValidateContactNumber(input))
+                                                                {
+                                                                    customer.CONTACT_NUMBER = input;
+                                                                    break;
+                                                                }
+                                                                else
+                                                                    Console.WriteLine("Invalid contact number please try again");
+                                                            } while (true);
+                                                            do
+                                                            {
+                                                                Console.Write("Enter Email Id: ");
+                                                                string input = Console.ReadLine();
+
+                                                                if (Validation.ValidateEmail(input))
+                                                                {
+                                                                    customer.EMAIL = input;
+                                                                    break;
+                                                                }
+                                                                else
+                                                                    Console.WriteLine("Invalid email please try again");
+                                                            } while (true);
+                                                            Console.Write("Enter Date Of Birth(DD-MM-YYYY): ");
                                                             customer.DOB = Console.ReadLine();
                                                             customerservice.UpdateCustomerById(customer);
                                                             Console.WriteLine("Customer Details Updated Successfully.");
@@ -201,7 +355,7 @@ namespace LoanManagementSystem.UI
                                                     Console.WriteLine("1. Loan Processing ");
                                                     Console.WriteLine("2. View Customers");                                                    
                                                     Console.WriteLine("3. Search Customer");
-                                                    Console.WriteLine("4. Delete Customers");
+                                                    Console.WriteLine("4. Delete Pending Customers");
                                                     Console.WriteLine("5. Exit");
                                                     Console.WriteLine("Enter your choice: ");
                                                     int Customerchoice1 = int.Parse(Console.ReadLine());

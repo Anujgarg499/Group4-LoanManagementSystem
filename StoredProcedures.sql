@@ -75,16 +75,16 @@ select LOAN_STATUS from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID
 end
 
 -- Stored Procedure For Apply Loan
-create procedure ApplyLoan(@LOAN_AMOUNT numeric,@CUSTOMER_ID varchar(20),@LOAN_TYPE varchar(20),@TENURE numeric)
+create procedure ApplyLoan(@LOAN_AMOUNT numeric,@CUSTOMER_ID varchar(20),@LOAN_TYPE varchar(20),@INTEREST_RATE numeric,@TENURE numeric)
 as
 begin
 declare @LOAN_ACC_NUMBER numeric(12,0)
 Select @LOAN_ACC_NUMBER=Max(LOAN_ACC_NUMBER) FROM LOAN_DETAILS
 set @LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER+1
-insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,getdate(),'Pending',getdate(),7,@TENURE,getdate(),getdate(),1500,200000,getdate(),3)
+insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,getdate(),'Pending',getdate(),@INTEREST_RATE,@TENURE,getdate(),getdate(),1500,200000,getdate(),3)
 End
 
--- drop procedure ApplyLoan
+drop procedure ApplyLoan
 
 create procedure ViewPendingCustomers
 as

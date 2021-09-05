@@ -55,7 +55,7 @@ CREDIT_LIMIT numeric,
 LAST_UPDATED_CREDIT_DATE date,
 CUSTOMER_ASSET_ID numeric
 )
-select * from LOAN_DETAILS
+select * from Customer
 insert into LOAN_DETAILS values(1000,20000,'abc123','Akash35','Home loan',null,'Pending',null,7,10,null,null,400,1000,null,3)
 
 
