@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagementSystem.Entities
 {
+    // Pending Customers Entities By: Sonali
     public class PendingCustomers
     {
         public string CUSTOMER_ID { get; set; }

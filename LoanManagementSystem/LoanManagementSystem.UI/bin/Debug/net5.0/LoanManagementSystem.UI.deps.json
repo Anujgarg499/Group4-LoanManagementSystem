@@ -9,7 +9,8 @@
       "LoanManagementSystem.UI/1.0.0": {
         "dependencies": {
           "LoanManagementSystem.BAL": "1.0.0",
-          "LoanManagementSystem.Entities": "1.0.0"
+          "LoanManagementSystem.Entities": "1.0.0",
+          "System.Data.SqlClient": "4.8.2"
         },
         "runtime": {
           "LoanManagementSystem.UI.dll": {}

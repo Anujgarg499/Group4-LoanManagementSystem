@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoanManagementSystem.Entities
 {
-    // Loan Details Entity
+    // Loan Details Entity By: Arjoo
     public class LoanDetails
     {
         public decimal LOAN_ACC_NUMBER { get; set; }

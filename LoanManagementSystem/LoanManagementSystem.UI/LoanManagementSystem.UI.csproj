@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LoanManagementSystem.BuisnessLayer\LoanManagementSystem.BAL.csproj" />
     <ProjectReference Include="..\LoanManagementSystem.Entities\LoanManagementSystem.Entities.csproj" />
   </ItemGroup>

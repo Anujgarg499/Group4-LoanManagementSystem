@@ -15,6 +15,7 @@ namespace LoanManagementSystem.DAL.Repositories
         SqlConnection connection = new SqlConnection(@"Data Source=LAPTOP-DHE93BQG\SQLEXPRESS;Initial Catalog=LoanManagementSystem;Integrated Security=True");
         SqlCommand command = null;
 
+        // For Checking Criteria By: Sahithi
         public bool CheckCriteria(string CUSTOMER_ID)
         {
             try
@@ -43,7 +44,7 @@ namespace LoanManagementSystem.DAL.Repositories
         }
 
         // For Deleting Customer By:Anuj Garg
-        public void DeleteCustomerById(string CUSTOMER_ID)
+        public void DeleteCustomerById(string CUSTOMER_ID, decimal LOAN_ACC_Number)
         {
             try
             {
@@ -53,6 +54,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 };
                 //passing value to query-paramenters
                 command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
+                command.Parameters.AddWithValue("@LOAN_ACC_Number", LOAN_ACC_Number);
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
             }
@@ -93,6 +95,7 @@ namespace LoanManagementSystem.DAL.Repositories
             }
         }
 
+        // For Loan Approval By: Arjoo
         public void LoanApproval(string CUSTOMER_ID, string EmpId)
         {
             try
@@ -117,6 +120,7 @@ namespace LoanManagementSystem.DAL.Repositories
             }
         }
 
+        // For Loan Rejection By: Anuj Garg
         public void LoanRejection(string CUSTOMER_ID, string EmpId, decimal LOAN_ACC_Number)
         {
             try
@@ -185,6 +189,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
+
         // To View All the Customers By: Sahithi
         public List<Customer> ViewCustomers()
         {
@@ -228,6 +233,7 @@ namespace LoanManagementSystem.DAL.Repositories
                          }
         }
 
+        // For Viewing Pending Customers Details By: Anuj Garg, Arjoo
         public List<PendingCustomers> ViewPendingCustomers()
         {
             try
@@ -251,6 +257,45 @@ namespace LoanManagementSystem.DAL.Repositories
                             FIRST_NAME = dr["FIRST_NAME"].ToString(),
                             LAST_NAME = dr["LAST_NAME"].ToString(),
                             LOAN_STATUS=dr["LOAN_STATUS"].ToString()
+                        });
+                    }
+                }
+                return customers;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        // For Viewing Pending and Rejected Customers Details By: Sonali,Hari
+        public List<PendingCustomers> ViewPendingandRejectedCustomers()
+        {
+            try
+            {
+                List<PendingCustomers> customers = null;
+                command = new SqlCommand("ViewPendingandRejectedCustomers", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    customers = new List<PendingCustomers>();
+                    while (dr.Read())
+                    {
+                        customers.Add(new PendingCustomers()
+                        {
+                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
+                            LOAN_ACC_NUMBER = (decimal)dr["LOAN_ACC_NUMBER"],
+                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
+                            LAST_NAME = dr["LAST_NAME"].ToString(),
+                            LOAN_STATUS = dr["LOAN_STATUS"].ToString()
                         });
                     }
                 }

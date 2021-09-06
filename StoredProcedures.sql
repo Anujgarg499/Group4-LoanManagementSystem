@@ -6,14 +6,14 @@ begin
 insert into Customer values(@CUSTOMER_ID, @FIRST_NAME ,@LAST_NAME,@CUSTOMER_PASSWORD, @ADDRESS, @PAN_NUMBER, @AADHAR_NUMBER, @CONTACT_NUMBER, @EMAIL ,@DOB, @CREDIT_LIMIT, @LAST_UPDATED_CREDIT_DATE)
 end
 
--- Stored procedure for view customers By:
+-- Stored procedure for view customers By: Arjoo
 create procedure ViewCustomers
 as
 begin
 Select *from Customer 
 End
 
--- Stored procedure for search customer By:
+-- Stored procedure for search customer By: Arjoo
 create procedure SearchCustomerById(@CUSTOMER_ID varchar(20))
 as
 begin
@@ -43,13 +43,15 @@ update Customer set FIRST_NAME = @FIRST_NAME,
 						  DOB = @DOB
 						  where CUSTOMER_ID=@CUSTOMER_ID
 end
--- drop procedure UpdateCustomerById
+
+
 -- Stored Procedure Delete Customer By Id By: Anuj Garg
-create procedure DeleteCustomerById(@CUSTOMER_ID varchar(20))
+create procedure DeleteCustomerById(@CUSTOMER_ID varchar(20),@LOAN_ACC_NUMBER numeric(12,0))
 as
 begin
-delete from Customer where CUSTOMER_ID=@CUSTOMER_ID
+delete from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID and LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER and LOAN_STATUS != 'Approved';
 end
+
 
 -- Stored Procedure to check customer login part By: Sonali
 create procedure IsLoginCustomer(@CUSTOMER_ID varchar(20),@CUSTOMER_PASSWORD varchar(30))
@@ -74,7 +76,7 @@ begin
 select LOAN_STATUS from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID
 end
 
--- Stored Procedure For Apply Loan
+-- Stored Procedure For Apply Loan By: Sonali
 create procedure ApplyLoan(@LOAN_AMOUNT numeric,@CUSTOMER_ID varchar(20),@LOAN_TYPE varchar(20),@INTEREST_RATE numeric,@TENURE numeric)
 as
 begin
@@ -84,25 +86,21 @@ set @LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER+1
 insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,getdate(),'Pending',getdate(),@INTEREST_RATE,@TENURE,getdate(),getdate(),1500,200000,getdate(),3)
 End
 
-drop procedure ApplyLoan
-
+-- Stored Procedure For ViewPendingCustomers By: Hari
 create procedure ViewPendingCustomers
 as
 begin
 select C.CUSTOMER_ID,L.LOAN_ACC_NUMBER,C.FIRST_NAME,C.LAST_NAME,L.LOAN_STATUS from Customer C join LOAN_DETAILS L on C.CUSTOMER_ID=L.CUSTOMER_ID where L.LOAN_STATUS='Pending'
 end
 
- drop procedure ViewPendingCustomers
--- exec ViewPendingCustomers
-
+-- Stored Procedure For Check Criteria By: Sahithi
 create procedure CheckCriteria(@CUSTOMER_ID varchar(20))
 as
 begin
 select * from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID and LOAN_STATUS = 'Approved'
 end
-drop procedure CheckCriteria
--- exec CheckCriteria 'abc123'
 
+-- Stored Procedure For Loan Approval By: Amulya
 create procedure LoanApproval(@CUSTOMER_ID varchar(20),@EmpId varchar(20))
 as begin
 declare @TENURE numeric
@@ -112,12 +110,18 @@ set EmpId=@EmpId,LOAN_STATUS='Approved',LOAN_APPROVED_DATE=getdate(),EMI_START_D
 where CUSTOMER_ID=@CUSTOMER_ID 
 end
 
-drop Procedure LoanRejection
-
+-- Stored Procedure For Loan Rejection By: Anuj Garg
 create procedure LoanRejection(@CUSTOMER_ID varchar(20),@EmpId varchar(20),@LOAN_ACC_NUMBER numeric(12,0))
 as 
 begin
 update LOAN_DETAILS
 set EmpId=@EmpId,LOAN_STATUS='Rejected'
 where CUSTOMER_ID=@CUSTOMER_ID and LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER
+end
+
+-- Stored Procedure For ViewPendingandRejectedCustomers By: Arjoo
+create procedure ViewPendingandRejectedCustomers
+as
+begin
+select C.CUSTOMER_ID,L.LOAN_ACC_NUMBER,C.FIRST_NAME,C.LAST_NAME,L.LOAN_STATUS from Customer C join LOAN_DETAILS L on C.CUSTOMER_ID=L.CUSTOMER_ID where L.LOAN_STATUS='Pending' or L.LOAN_STATUS='Rejected'
 end

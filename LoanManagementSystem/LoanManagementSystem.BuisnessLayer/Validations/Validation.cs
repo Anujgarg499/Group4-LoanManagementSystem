@@ -9,6 +9,7 @@ namespace LoanManagementSystem.BAL.Validations
 {
     public class Validation
     {
+        // For Validating Password
         public static bool ValidatePassword(string input)
         {
             string pattern = "(?=.*[a-z])"
@@ -21,6 +22,8 @@ namespace LoanManagementSystem.BAL.Validations
             else
                 return false;
         }
+
+        // For Validating Username
         public static bool ValidateUsername(string input)
         {
             string pattern = "^[A-Za-z0-9]{3,10}$";
@@ -29,6 +32,8 @@ namespace LoanManagementSystem.BAL.Validations
             else
                 return false;
         }
+
+        //For Validating Contact Number
         public static bool ValidateContactNumber(decimal input)
         {
             string number = Convert.ToString(input);
@@ -40,6 +45,7 @@ namespace LoanManagementSystem.BAL.Validations
             else
                 return false;
         }
+
         // Method to check the Email ID
         public static bool ValidateEmail(string input)
         {
@@ -51,6 +57,7 @@ namespace LoanManagementSystem.BAL.Validations
             else
                 return (false);
         }
+
         //Customer Pan Validation
         public static bool ValidatePAN(string input)
         {
@@ -61,6 +68,8 @@ namespace LoanManagementSystem.BAL.Validations
             else
                 return (false);
         }
+
+        // For validating Aadhar Number
         public static bool ValidateAadhar(decimal input)
         {
             string number = Convert.ToString(input);

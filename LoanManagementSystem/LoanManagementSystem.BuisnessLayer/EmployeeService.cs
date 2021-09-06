@@ -15,9 +15,9 @@ namespace LoanManagementSystem.BAL
         {
             repository = new BankEmployeeRepository();
         }
-        public void DeleteCustomerById(string CUSTOMER_ID)
+        public void DeleteCustomerById(string CUSTOMER_ID, decimal LOAN_ACC_Number)
         {
-            repository.DeleteCustomerById(CUSTOMER_ID);
+            repository.DeleteCustomerById(CUSTOMER_ID,LOAN_ACC_Number);
         }
         public List<Customer> ViewCustomers()
         {
@@ -46,7 +46,12 @@ namespace LoanManagementSystem.BAL
             List<PendingCustomers> pendingcustomers = repository.ViewPendingCustomers();
             return pendingcustomers;
         }
-        public bool CheckCriteria(string CUSTOMER_ID)
+        public List<PendingCustomers> ViewPendingandRejectedCustomers()
+        {
+            List<PendingCustomers> pendingandrejectedcustomers = repository.ViewPendingandRejectedCustomers();
+            return pendingandrejectedcustomers;
+        }
+            public bool CheckCriteria(string CUSTOMER_ID)
         {
             bool isEligible = repository.CheckCriteria(CUSTOMER_ID);
             if (isEligible == true)

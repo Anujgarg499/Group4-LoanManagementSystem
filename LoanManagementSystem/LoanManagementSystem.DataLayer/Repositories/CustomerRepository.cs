@@ -107,6 +107,7 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
+        // For Applying Loan By: Anuj Garg,Sonali
 		public void ApplyLoan(LoanDetails loandetails)
         {
             try
@@ -134,6 +135,8 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Close();
             }
         }
+
+        // For Check Loan Status By: Amulya,Sahithi
 		public string CheckLoanStatus(string CUSTOMER_ID)
         {
             try
