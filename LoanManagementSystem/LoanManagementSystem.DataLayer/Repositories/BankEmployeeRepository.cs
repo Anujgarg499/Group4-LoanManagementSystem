@@ -29,13 +29,13 @@ namespace LoanManagementSystem.DAL.Repositories
                 command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
-                SqlDataReader dr = command.ExecuteReader();
-                isEligible = dr.HasRows;
+                SqlDataReader datareader = command.ExecuteReader();
+                isEligible = datareader.HasRows;
                 return isEligible;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -58,9 +58,9 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -81,13 +81,13 @@ namespace LoanManagementSystem.DAL.Repositories
                 command.Parameters.AddWithValue("@EmpId", EmpId);
                 command.Parameters.AddWithValue("@EmpPassword", EmpPassword);
                 connection.Open(); //open connnection
-                SqlDataReader dr = command.ExecuteReader();
-                loginsuccessful = dr.HasRows;
+                SqlDataReader datareader = command.ExecuteReader();
+                loginsuccessful = datareader.HasRows;
                 return loginsuccessful;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -110,9 +110,9 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -136,9 +136,9 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -158,22 +158,22 @@ namespace LoanManagementSystem.DAL.Repositories
                 };
                 command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
                 connection.Open(); //open connnection
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataReader datareader = command.ExecuteReader();
+                if (datareader.HasRows)
                 {
-                    dr.Read();
+                    datareader.Read();
                     customer = new Customer()
                     {
 
-                        CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
-                        FIRST_NAME = dr["FIRST_NAME"].ToString(),
-                        LAST_NAME = dr["LAST_NAME"].ToString(),
-                        ADDRESS = dr["ADDRESS"].ToString(),
-                        PAN_NUMBER = dr["PAN_NUMBER"].ToString(),
-                        AADHAR_NUMBER = (decimal)dr["AADHAR_NUMBER"],
-                        CONTACT_NUMBER = (decimal)dr["CONTACT_NUMBER"],
-                        EMAIL = dr["EMAIL"].ToString(),
-                        DOB = dr["DOB"].ToString()               
+                        CUSTOMER_ID = datareader["CUSTOMER_ID"].ToString(),
+                        FIRST_NAME = datareader["FIRST_NAME"].ToString(),
+                        LAST_NAME = datareader["LAST_NAME"].ToString(),
+                        ADDRESS = datareader["ADDRESS"].ToString(),
+                        PAN_NUMBER = datareader["PAN_NUMBER"].ToString(),
+                        AADHAR_NUMBER = (decimal)datareader["AADHAR_NUMBER"],
+                        CONTACT_NUMBER = (decimal)datareader["CONTACT_NUMBER"],
+                        EMAIL = datareader["EMAIL"].ToString(),
+                        DOB = datareader["DOB"].ToString()               
 
                     };
                 }
@@ -181,7 +181,6 @@ namespace LoanManagementSystem.DAL.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
@@ -201,31 +200,31 @@ namespace LoanManagementSystem.DAL.Repositories
                     CommandType = CommandType.StoredProcedure
                 }; 
                 connection.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataReader datareader = command.ExecuteReader();
+                if (datareader.HasRows)
                 {
                     customers = new List<Customer>();
-                    while (dr.Read())
+                    while (datareader.Read())
                     {
                         customers.Add(new Customer()
                         {
-                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
-                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
-                            LAST_NAME = dr["LAST_NAME"].ToString(),
-                            ADDRESS = dr["ADDRESS"].ToString(),
-                            PAN_NUMBER = dr["PAN_NUMBER"].ToString(),
-                            AADHAR_NUMBER = (decimal)dr["AADHAR_NUMBER"],
-                            CONTACT_NUMBER = (decimal)dr["CONTACT_NUMBER"],
-                            EMAIL = dr["EMAIL"].ToString(),
-                            DOB = dr["DOB"].ToString(),                            
+                            CUSTOMER_ID = datareader["CUSTOMER_ID"].ToString(),
+                            FIRST_NAME = datareader["FIRST_NAME"].ToString(),
+                            LAST_NAME = datareader["LAST_NAME"].ToString(),
+                            ADDRESS = datareader["ADDRESS"].ToString(),
+                            PAN_NUMBER = datareader["PAN_NUMBER"].ToString(),
+                            AADHAR_NUMBER = (decimal)datareader["AADHAR_NUMBER"],
+                            CONTACT_NUMBER = (decimal)datareader["CONTACT_NUMBER"],
+                            EMAIL = datareader["EMAIL"].ToString(),
+                            DOB = datareader["DOB"].ToString(),                            
                         });
                     }
                 }
                 return customers;
             }
-                        catch (Exception ex)
+                        catch (Exception)
                          {
-                            throw ex;
+                            throw;
                            }
                          finally
                         {
@@ -244,27 +243,27 @@ namespace LoanManagementSystem.DAL.Repositories
                     CommandType = CommandType.StoredProcedure
                 };
                 connection.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataReader datareader = command.ExecuteReader();
+                if (datareader.HasRows)
                 {
                     customers = new List<PendingCustomers>();
-                    while (dr.Read())
+                    while (datareader.Read())
                     {
                         customers.Add(new PendingCustomers()
                         {
-                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
-                            LOAN_ACC_NUMBER = (decimal)dr["LOAN_ACC_NUMBER"],
-                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
-                            LAST_NAME = dr["LAST_NAME"].ToString(),
-                            LOAN_STATUS=dr["LOAN_STATUS"].ToString()
+                            CUSTOMER_ID = datareader["CUSTOMER_ID"].ToString(),
+                            LOAN_ACC_NUMBER = (decimal)datareader["LOAN_ACC_NUMBER"],
+                            FIRST_NAME = datareader["FIRST_NAME"].ToString(),
+                            LAST_NAME = datareader["LAST_NAME"].ToString(),
+                            LOAN_STATUS= datareader["LOAN_STATUS"].ToString()
                         });
                     }
                 }
                 return customers;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -283,27 +282,27 @@ namespace LoanManagementSystem.DAL.Repositories
                     CommandType = CommandType.StoredProcedure
                 };
                 connection.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataReader datareader = command.ExecuteReader();
+                if (datareader.HasRows)
                 {
                     customers = new List<PendingCustomers>();
-                    while (dr.Read())
+                    while (datareader.Read())
                     {
                         customers.Add(new PendingCustomers()
                         {
-                            CUSTOMER_ID = dr["CUSTOMER_ID"].ToString(),
-                            LOAN_ACC_NUMBER = (decimal)dr["LOAN_ACC_NUMBER"],
-                            FIRST_NAME = dr["FIRST_NAME"].ToString(),
-                            LAST_NAME = dr["LAST_NAME"].ToString(),
-                            LOAN_STATUS = dr["LOAN_STATUS"].ToString()
+                            CUSTOMER_ID = datareader["CUSTOMER_ID"].ToString(),
+                            LOAN_ACC_NUMBER = (decimal)datareader["LOAN_ACC_NUMBER"],
+                            FIRST_NAME = datareader["FIRST_NAME"].ToString(),
+                            LAST_NAME = datareader["LAST_NAME"].ToString(),
+                            LOAN_STATUS = datareader["LOAN_STATUS"].ToString()
                         });
                     }
                 }
                 return customers;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {

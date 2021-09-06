@@ -7,42 +7,86 @@ namespace LoanManagementSystem.BAL
     public class CustomerService
     {
         CustomerRepository repository = null;
+        // Invoking Constructor
         public CustomerService()
         {
-            repository = new CustomerRepository();
+            try
+            {
+                repository = new CustomerRepository();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         // Invoking Add Customer from DAL
         public void AddCustomer(Customer customer)
         {
-            repository.AddCustomer(customer);
+            try
+            {
+                repository.AddCustomer(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         // Invoking Update Customer from DAL
         public void UpdateCustomerById(Customer customer)
         {
-            repository.UpdateCustomerById(customer);
+            try
+            {
+                repository.UpdateCustomerById(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         // Invoking IsLoginCustomer checking
         public bool IsLoginCustomer(string CUSTOMER_ID, string CUSTOMER_PASSWORD)
         {
-            bool check = repository.IsLoginCustomer(CUSTOMER_ID,CUSTOMER_PASSWORD);
-            if (check == true)
+            try
             {
-                return true;
+                bool check = repository.IsLoginCustomer(CUSTOMER_ID, CUSTOMER_PASSWORD);
+                if (check == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception)
             {
-                return false;
+                throw;
             }
         }
         // Invoking Apply Loan
         public void ApplyLoan(LoanDetails loandetails)
         {
-            repository.ApplyLoan(loandetails);
+            try
+            {
+                repository.ApplyLoan(loandetails);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+        // Invoking CheckLoanStatus
         public string CheckLoanStatus(string CUSTOMER_ID)
         {
-            string loanstatus = repository.CheckLoanStatus(CUSTOMER_ID);
-            return loanstatus;
+            try
+            {
+                string loanstatus = repository.CheckLoanStatus(CUSTOMER_ID);
+                return loanstatus;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

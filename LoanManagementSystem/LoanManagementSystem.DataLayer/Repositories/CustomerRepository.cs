@@ -41,7 +41,6 @@ namespace LoanManagementSystem.DAL.Repositories
 			}
 			catch (Exception)
 			{
-
 				throw;
 			}
 			finally
@@ -62,13 +61,12 @@ namespace LoanManagementSystem.DAL.Repositories
 				command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
 				command.Parameters.AddWithValue("@CUSTOMER_PASSWORD", CUSTOMER_PASSWORD);
 				connection.Open(); //open connnection
-				SqlDataReader dr = command.ExecuteReader();
-				loginsuccessful = dr.HasRows;
+				SqlDataReader datareader = command.ExecuteReader();
+				loginsuccessful = datareader.HasRows;
 				return loginsuccessful;
 			}
 			catch (Exception)
 			{
-
 				throw;
 			}
 			finally
@@ -98,9 +96,9 @@ namespace LoanManagementSystem.DAL.Repositories
                 connection.Open(); //open connnection
                 command.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
             finally
             {
@@ -148,11 +146,11 @@ namespace LoanManagementSystem.DAL.Repositories
                 };
                 command.Parameters.AddWithValue("@CUSTOMER_ID", CUSTOMER_ID);
                 connection.Open(); //open connnection
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataReader datareader = command.ExecuteReader();
+                if (datareader.HasRows)
                 {
-                    dr.Read();
-                    status = dr["LOAN_STATUS"].ToString();                
+                    datareader.Read();
+                    status = datareader["LOAN_STATUS"].ToString();                
                 }
                 return status;
             }

@@ -19,13 +19,14 @@ namespace LoanManagementSystem.UI
                 do
                 {
                     // Start of the Application
+                    MAINMENU:
                     Console.WriteLine();
                     Console.WriteLine("----------------------------------------------------------------");
                     Console.WriteLine("                   MAIN MENU                                    ");
                     Console.WriteLine("----------------------------------------------------------------");
                     Console.WriteLine("1. Customer");
                     Console.WriteLine("2. Bank Employee");
-                    Console.WriteLine("3.Exit");
+                    Console.WriteLine("3.Exit Application");
                     Console.Write("Enter your choice: ");
                     int choice = int.Parse(Console.ReadLine());
                     Console.WriteLine();
@@ -33,14 +34,16 @@ namespace LoanManagementSystem.UI
                     {
                         case 1:
                             {
-                                // Customer Section
+                            // Customer Section
+                                CUSTOMER:
                                 Console.WriteLine();
                                 Console.WriteLine("----------------------------------------------------------------");
                                 Console.WriteLine("                   CUSTOMER MENU                                ");
                                 Console.WriteLine("----------------------------------------------------------------");
                                 Console.WriteLine("1. Register Customer");
                                 Console.WriteLine("2. Login");
-                                Console.WriteLine("3. Exit");
+                                Console.WriteLine("3. Back to Main Menu");
+                                Console.WriteLine("4. Exit Application");
                                 Console.Write("Enter your choice: ");
                                 int Customerchoice = int.Parse(Console.ReadLine());
                                 Console.WriteLine();
@@ -140,7 +143,7 @@ namespace LoanManagementSystem.UI
                                             }
                                             catch (SqlException exception)
                                             {
-                                                Console.WriteLine("The Customer with this Customer Username is already present. Try with different customerId");
+                                                Console.WriteLine("Something went wrong while Registring Customer."+exception.Message);
                                             }
                                             catch (Exception ex) { Console.WriteLine(ex.Message); }
                                         }
@@ -155,17 +158,19 @@ namespace LoanManagementSystem.UI
                                             bool checklogin = customerservice.IsLoginCustomer(CUSTOMER_ID, CUSTOMER_PASSWORD);
                                             if (checklogin == true)
                                             {
+                                                Console.WriteLine("Customer Login Successful.");
                                                 do
-                                                {
-                                                    Console.WriteLine("Customer Login Successful.");
+                                                {                                                    
                                                     Console.WriteLine();
                                                     Console.WriteLine("1. Apply For Loan");
                                                     Console.WriteLine("2. Check Status");
                                                     Console.WriteLine("3. Update Customer Details");
-                                                    Console.WriteLine("4. Exit");
+                                                    Console.WriteLine("4. Back To Customer Menu");
+                                                    Console.WriteLine("5. Back To Main Menu");
+                                                    Console.WriteLine("6. Exit Application");
                                                     Console.Write("Enter your choice: ");
                                                     int Customerchoice1 = int.Parse(Console.ReadLine());
-                                                    Console.WriteLine();
+                                                    Console.WriteLine();                                                    
                                                     switch (Customerchoice1)
                                                     {
                                                         case 1:
@@ -207,7 +212,7 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while submitting Loan Application.");
+                                                                    Console.WriteLine("Something went wrong while submitting Loan Application." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
@@ -223,7 +228,7 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Checking Loan Status.");
+                                                                    Console.WriteLine("Something went wrong while Checking Loan Status." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
@@ -297,12 +302,17 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Updating Customer Details.");
+                                                                    Console.WriteLine("Something went wrong while Updating Customer Details." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
                                                             break;
                                                         case 4:
+                                                            {
+                                                                goto CUSTOMER;
+                                                            }                                                            
+                                                        case 5: { goto MAINMENU; }
+                                                        case 6:
                                                             {
                                                                 Environment.Exit(0);
                                                             }
@@ -322,7 +332,8 @@ namespace LoanManagementSystem.UI
                                             }
                                         }
                                         break;
-                                    case 3:
+                                    case 3: { goto MAINMENU; }
+                                    case 4:
                                         {
                                             Environment.Exit(0);
                                         }
@@ -337,7 +348,7 @@ namespace LoanManagementSystem.UI
                             break;
                         case 2:
                             {
-                                // Employee Section
+                                // Employee Section                                
                                 Console.WriteLine();
                                 Console.WriteLine("----------------------------------------------------------------");
                                 Console.WriteLine("                   EMPLOYEE MENU                                ");
@@ -369,7 +380,8 @@ namespace LoanManagementSystem.UI
                                                     Console.WriteLine("2. View Customers");
                                                     Console.WriteLine("3. Search Customer");
                                                     Console.WriteLine("4. Delete Customers");
-                                                    Console.WriteLine("5. Exit");
+                                                    Console.WriteLine("5. Back to Main Menu");
+                                                    Console.WriteLine("6. Exit Application");
                                                     Console.Write("Enter your choice: ");
                                                     int Customerchoice1 = int.Parse(Console.ReadLine());
                                                     Console.WriteLine();
@@ -414,7 +426,7 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Processing Customer Loan.");
+                                                                    Console.WriteLine("Something went wrong while Processing Customer Loan." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
@@ -441,7 +453,7 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Viewing Customer Details.");
+                                                                    Console.WriteLine("Something went wrong while Viewing Customer Details." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
@@ -468,7 +480,7 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Searching Customer Details.");
+                                                                    Console.WriteLine("Something went wrong while Searching Customer Details." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
@@ -511,12 +523,16 @@ namespace LoanManagementSystem.UI
                                                                 }
                                                                 catch (SqlException exception)
                                                                 {
-                                                                    Console.WriteLine("Something went wrong while Deleting Customer.");
+                                                                    Console.WriteLine("Something went wrong while Deleting Customer." + exception.Message);
                                                                 }
                                                                 catch (Exception ex) { Console.WriteLine(ex.Message); }
                                                             }
                                                             break;
                                                         case 5:
+                                                            {
+                                                                goto MAINMENU;
+                                                            }
+                                                        case 6:
                                                             {
                                                                 Environment.Exit(0);
                                                             }

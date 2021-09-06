@@ -9,8 +9,4 @@
     <ProjectReference Include="..\LoanManagementSystem.Entities\LoanManagementSystem.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
-
 </Project>

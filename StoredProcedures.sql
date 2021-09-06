@@ -83,7 +83,7 @@ begin
 declare @LOAN_ACC_NUMBER numeric(12,0)
 Select @LOAN_ACC_NUMBER=Max(LOAN_ACC_NUMBER) FROM LOAN_DETAILS
 set @LOAN_ACC_NUMBER=@LOAN_ACC_NUMBER+1
-insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,getdate(),'Pending',getdate(),@INTEREST_RATE,@TENURE,getdate(),getdate(),1500,200000,getdate(),3)
+insert into LOAN_DETAILS values(@LOAN_ACC_NUMBER,@LOAN_AMOUNT,@CUSTOMER_ID,'Akash35',@LOAN_TYPE,null,'Pending',getdate(),@INTEREST_RATE,@TENURE,null,null,1500,2000000,getdate(),3)
 End
 
 -- Stored Procedure For ViewPendingCustomers By: Hari
@@ -104,11 +104,12 @@ end
 create procedure LoanApproval(@CUSTOMER_ID varchar(20),@EmpId varchar(20))
 as begin
 declare @TENURE numeric
-select @TENURE = @TENURE from LOAN_DETAILS
+set @TENURE = (select TENURE from LOAN_DETAILS where CUSTOMER_ID=@CUSTOMER_ID)
 update LOAN_DETAILS
-set EmpId=@EmpId,LOAN_STATUS='Approved',LOAN_APPROVED_DATE=getdate(),EMI_START_DATE=getdate(),EMI_END_DATE=DATEADD(YYYY,@TENURE,EMI_START_DATE)
+set EmpId=@EmpId,LOAN_STATUS='Approved',LOAN_APPROVED_DATE=getdate(),EMI_START_DATE=getdate(),EMI_END_DATE=DATEADD(YEAR,@TENURE,getdate())
 where CUSTOMER_ID=@CUSTOMER_ID 
 end
+
 
 -- Stored Procedure For Loan Rejection By: Anuj Garg
 create procedure LoanRejection(@CUSTOMER_ID varchar(20),@EmpId varchar(20),@LOAN_ACC_NUMBER numeric(12,0))
